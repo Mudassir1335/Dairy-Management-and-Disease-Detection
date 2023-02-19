@@ -18,3 +18,6 @@ Route::get('/', function () {
 
 });
 Route::view('products', 'products');
+Route::view('web', 'mainweb');
+Route::view('cart', 'cart');
+Route::view('checkout', 'checkout');
