@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WebController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,9 @@ Route::view('checkout', 'checkout');
 
 Route::view('dashboard', 'dashboard');
 Route::view('products','products');
-
+Route::post('product',[WebController::class,'addproduct']);
+Route::get('products',[WebController::class,'showproduct']);
+Route::get('delete/{id}',[WebController::class,'delete']);
 
 
 
