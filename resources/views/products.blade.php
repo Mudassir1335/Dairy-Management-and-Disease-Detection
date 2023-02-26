@@ -235,7 +235,9 @@
     </nav>
     <!-- End Navbar -->
     <div class="text-center">
-  <button type="button" class="btn btn-primary">Add Product</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+  Add product
+</button>
 </div>
     <div class="container-fluid py-4">
       <div class="row">
@@ -265,9 +267,30 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <tr>
+                    @foreach($products as $product)
+                   <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{$product['product_name']}}</td>
+                   <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{$product['category']}}</td>
                    
-      
-    </div>
+                   <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{$product['price']}}</td>
+                   <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{$product['quantity']}}</td>
+                     <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{$product['product_image']}}</td>
+                     <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{$product['expirey_date']}}</td>
+                     <td> <button type="button" class="btn btn-dark">Edit</button>
+                  </td>
+                  <td>
+                  <a type="button"  class="btn btn-secondary" href={{"delete/" .$product['id']}} >Delete</a>
+                  <!-- <td><a type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" href={{"delete/",$product['id']}} >Delete</a> -->
+
+</td>
+</tr>
+                   @endforeach
+                  
+                   
+      <tbody>
+    
+</table>
+</div>
   </main>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
@@ -332,6 +355,75 @@
       </div>
     </div>
   </div>
+
+
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+	
+		<link rel="stylesheet" href="css/ionicons.min.css">
+		<link rel="stylesheet" href="css/flaticon.css">
+		<link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+		
+		
+		
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form class="px-4 py-3" action="product" method="POST">
+        @csrf
+      <div class="form-group">
+      <label >Product Name</label>
+      <input type="text" name="pname" class="form-control"  placeholder="Product Name">
+    </div>
+    <div class="form-group">
+      
+      <label for="exampleDropdownFormPassword1">Price</label>
+      <input type=""  name="pprice" class="form-control" id="exampleDropdownFormPassword1" placeholder="Price">
+    </div>
+    <div class="form-group">
+      
+      <label for="exampleDropdownFormq">Quantity</label>
+      <input type="" name="quantity"  class="form-control" id="exampleDropdownFormq" placeholder="Quantity">
+    </div>
+    <div class="form-group">
+      
+      <label for="exampleDropdownFormC">Category</label>
+      <input type="text" name="category"  class="form-control" id="exampleDropdownFormC" placeholder="Category">
+    </div>
+    <div class="form-group">
+      
+      <label for="exampleDropdownFormdate">Expirey Date</label>
+      <input type="text" name="date"  class="form-control" id="exampleDropdownFormdate" placeholder="Expirey Date">
+    </div>
+    <div class="form-group">
+      <input type="file" class="form-control"  name="img"id="exampleDropdownFormimg" >
+    </div>
+
+</from>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+ 
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
@@ -350,6 +442,29 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.min.js?v=3.0.4"></script>
+  <!-- DELETE MODEL -->
+ 
+<!-- delete Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       Are You Sure You Want To Delete This Record?
+      </div>
+      <form action="delete/{id}" method="get">
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">no</button>
+        </div>
+      </form>
+    </div>
+  </div> -->
+</div>
 </body>
 
 </html>
