@@ -253,12 +253,13 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product name</th>
-                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product Name</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantity</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image</th>
+                       
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Expirey date</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
                     
@@ -267,26 +268,47 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                    @foreach($products as $product)
-                   <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{$product['product_name']}}</td>
-                   <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{$product['category']}}</td>
-                   
-                   <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{$product['price']}}</td>
-                   <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{$product['quantity']}}</td>
-                     <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{$product['product_image']}}</td>
-                     <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{$product['expirey_date']}}</td>
-                     <td> <button type="button" class="btn btn-dark">Edit</button>
-                  </td>
-                  <td>
-                  <a type="button"  class="btn btn-secondary" href={{"delete/" .$product['id']}} >Delete</a>
-                  <!-- <td><a type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" href={{"delete/",$product['id']}} >Delete</a> -->
-
-</td>
-</tr>
-                   @endforeach
+                    
                   
+                   <tr>
+                    @foreach($products as $product)
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        {{-- <div>
+                          <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                        </div> --}}
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">{{$product['product_name']}}</h6>
+                          
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="text-xs font-weight-bold mb-0">{{$product['category']}}</p>
+                     
+                    </td>
+                    
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">{{$product['price']}}</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">{{$product['quantity']}}</span>
+                    </td>
                    
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">{{$product['expirey_date']}}</span>
+                    </td>
+                    <td>
+                      <img src="{{ asset("uploads/$product->product_image") }}" style="
+                      width: 50px;
+                  " alt="" srcset="">
+                    </td>
+                    <td> <button type="button" class="btn btn-dark">Edit</button>
+                    </td>
+                    <td>
+                      <a type="button"  class="btn btn-dark" href={{"delete/" .$product['id']}} OnClick="return confirm('Are You Sure You want to Delete Products')" >Delete</a></td>
+                  </tr> 
+                  @endforeach      
       <tbody>
     
 </table>
@@ -379,7 +401,7 @@
         </button>
       </div>
       <div class="modal-body">
-      <form class="px-4 py-3" action="product" method="POST">
+      <form class="px-4 py-3" action="product" method="POST" enctype="multipart/form-data">
         @csrf
       <div class="form-group">
       <label >Product Name</label>
@@ -406,14 +428,15 @@
       <input type="text" name="date"  class="form-control" id="exampleDropdownFormdate" placeholder="Expirey Date">
     </div>
     <div class="form-group">
-      <input type="file" class="form-control"  name="img"id="exampleDropdownFormimg" >
+      <input type="file" class="form-control"  name="file" id="exampleDropdownFormimg" >
     </div>
 
-</from>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
+    </form>
     </div>
   </div>
 </div>

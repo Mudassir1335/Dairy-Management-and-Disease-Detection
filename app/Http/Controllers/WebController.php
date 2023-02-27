@@ -11,12 +11,20 @@ class WebController extends Controller
     function addproduct(Request $req)
     {
         $product=new Product;
+       
+        $file=$req->file('file');
+        $extenstion= $file->getClientOriginalExtension();
+        $filename=time().'.' .$extenstion;
+        $file->move('uploads',$filename);
+        $product->product_image=$filename;
+
+    
         $product->product_name=$req->pname;
         $product->price=$req->pprice;
         $product->quantity=$req->quantity;
         $product->category=$req->category;
         $product->expirey_date=$req->date;
-        $product->product_image=$req->img;
+        
         $product->save();
         return redirect('products');
 
