@@ -268,10 +268,10 @@
                     </tr>
                   </thead>
                   <tbody>
-                    
+                  @foreach($products as $product)
                   
                    <tr>
-                    @foreach($products as $product)
+                    
                     <td>
                       <div class="d-flex px-2 py-1">
                         {{-- <div>
@@ -303,14 +303,15 @@
                       width: 50px;
                   " alt="" srcset="">
                     </td>
-                    <td> <button type="button" class="btn btn-dark">Edit</button>
-                    </td>
+                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLong3<?php echo $product['id'];?>" class="btn btn-dark editbtn">Edit</button>
+                    
+                  </td>
                     <td>
                       <a type="button"  class="btn btn-dark" href={{"delete/" .$product['id']}} OnClick="return confirm('Are You Sure You want to Delete Products')" >Delete</a></td>
                   </tr> 
-                  @endforeach      
+                   
       <tbody>
-    
+      @endforeach    
 </table>
 </div>
   </main>
@@ -380,13 +381,6 @@
 
 
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
-	
-		<link rel="stylesheet" href="css/ionicons.min.css">
-		<link rel="stylesheet" href="css/flaticon.css">
-		<link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
 		
 		
 		
@@ -410,12 +404,12 @@
     <div class="form-group">
       
       <label for="exampleDropdownFormPassword1">Price</label>
-      <input type=""  name="pprice" class="form-control" id="exampleDropdownFormPassword1" placeholder="Price">
+      <input type=""  name="pprice"  class="form-control" id="exampleDropdownFormPassword1" placeholder="Price">
     </div>
     <div class="form-group">
       
       <label for="exampleDropdownFormq">Quantity</label>
-      <input type="" name="quantity"  class="form-control" id="exampleDropdownFormq" placeholder="Quantity">
+      <input type="" name="quantity"   class="form-control" id="exampleDropdownFormq" placeholder="Quantity">
     </div>
     <div class="form-group">
       
@@ -425,7 +419,7 @@
     <div class="form-group">
       
       <label for="exampleDropdownFormdate">Expirey Date</label>
-      <input type="text" name="date"  class="form-control" id="exampleDropdownFormdate" placeholder="Expirey Date">
+      <input type="date" name="date"  class="form-control" id="exampleDropdownFormdate" placeholder="Expirey Date">
     </div>
     <div class="form-group">
       <input type="file" class="form-control"  name="file" id="exampleDropdownFormimg" >
@@ -446,6 +440,7 @@
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    
  
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
@@ -460,33 +455,68 @@
       }
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
+
   </script>
+  
+  
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.min.js?v=3.0.4"></script>
-  <!-- DELETE MODEL -->
- 
-<!-- delete Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- Edit MODEL -->
+  <div class="modal fade" id="exampleModalLong3<?php echo $product['id'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Edit Product</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-       Are You Sure You Want To Delete This Record?
-      </div>
-      <form action="delete/{id}" method="get">
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">no</button>
-        </div>
-      </form>
+      <form class="px-4 py-3" action="/edit" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" value="{{$product['id']}}" name="id"/> 
+      <div class="form-group">
+      <label >Product Name</label>
+      <input type="text" name="pname" value="{{$product['product_name']}}" class="form-control"  placeholder="Product Name">
     </div>
-  </div> -->
+    <div class="form-group">
+      
+      <label for="exampleDropdownFormPassword1">Price</label>
+      <input type=""  name="pprice" value="{{$product['price']}}" class="form-control" id="exampleDropdownFormPassword1" placeholder="Price">
+    </div>
+    <div class="form-group">
+      
+      <label for="exampleDropdownFormq">Quantity</label>
+      <input type="" name="quantity" value="{{$product['quantity']}}" class="form-control" id="exampleDropdownFormq" placeholder="Quantity">
+    </div>
+    <div class="form-group">
+      
+      <label for="exampleDropdownFormC">Category</label>
+      <input type="text" name="category" value="{{$product['category']}}" class="form-control" id="exampleDropdownFormC" placeholder="Category">
+    </div>
+    <div class="form-group">
+      
+      <label for="exampleDropdownFormdate">Expirey Date</label>
+      <input type="text" name="date" value="{{$product['expirey_date']}}" class="form-control" id="exampleDropdownFormdate" placeholder="Expirey Date">
+    </div>
+    <div class="form-group">
+      <input type="file" class="form-control"  name="file" id="exampleDropdownFormimg" >
+    </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+  </div>
+ 
+<!-- end edit model -->
 </div>
 </body>
 

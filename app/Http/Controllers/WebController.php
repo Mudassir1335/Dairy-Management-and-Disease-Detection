@@ -42,4 +42,31 @@ class WebController extends Controller
         return redirect('products');
 
     }
+    function fetchdata($id)
+    {
+        $data= Product::find($id);
+        return view('edit',['products'=>$data]);
+
+    }
+    function updateproduct(request $req)
+    {
+       
+       $data=Product::find($req->id);
+       $file=$req->file('file');
+       $extenstion= $file->getClientOriginalExtension();
+       $filename=time().'.' .$extenstion;
+       $file->move('uploads',$filename);
+       
+       $data->product_image=$filename;
+       $data->product_name=$req->pname;
+       $data->price=$req->pprice;
+       $data->quantity=$req->quantity;
+       $data->category=$req->category;
+       $data->expirey_date=$req->date;
+       
+       $data->save();
+       return redirect('products');
+
+
+    }
 }
