@@ -7,7 +7,7 @@ use App\Models\Product;
 
 class WebController extends Controller
 {
-    //
+    
     function addproduct(Request $req)
     {
         $product=new Product;

@@ -21,6 +21,14 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.4" rel="stylesheet" />
+<style>
+  .brdr{
+    
+    border: solid 1px;
+    margin-left: 5px;
+
+  }
+</style>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -268,8 +276,6 @@
                     </tr>
                   </thead>
                   <tbody>
-                    
-                  
                    <tr>
                     @foreach($products as $product)
                     <td>
@@ -380,13 +386,7 @@
 
 
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
-	
-		<link rel="stylesheet" href="css/ionicons.min.css">
-		<link rel="stylesheet" href="css/flaticon.css">
-		<link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
+  
 		
 		
 		
@@ -404,31 +404,44 @@
       <form class="px-4 py-3" action="product" method="POST" enctype="multipart/form-data">
         @csrf
       <div class="form-group">
-      <label >Product Name</label>
-      <input type="text" name="pname" class="form-control"  placeholder="Product Name">
+      <label style="
+      color: black;
+  ">Product Name</label>
+      <input type="text" name="pname" class="form-control brdr"  >
     </div>
     <div class="form-group">
       
-      <label for="exampleDropdownFormPassword1">Price</label>
-      <input type=""  name="pprice" class="form-control" id="exampleDropdownFormPassword1" placeholder="Price">
+      <label style="
+      color: black;
+  " for="exampleDropdownFormPassword1">Price</label>
+      <input type=""  name="pprice" class="form-control brdr" id="exampleDropdownFormPassword1" >
     </div>
     <div class="form-group">
       
-      <label for="exampleDropdownFormq">Quantity</label>
-      <input type="" name="quantity"  class="form-control" id="exampleDropdownFormq" placeholder="Quantity">
+      <label style="
+      color: black;
+  " for="exampleDropdownFormq">Quantity</label>
+      <input type="" name="quantity"  class="form-control brdr" id="exampleDropdownFormq" >
     </div>
     <div class="form-group">
       
-      <label for="exampleDropdownFormC">Category</label>
-      <input type="text" name="category"  class="form-control" id="exampleDropdownFormC" placeholder="Category">
+      <label style="
+      color: black;
+  " for="exampleDropdownFormC">Category</label>
+      <input type="text" name="category"  class="form-control brdr" id="exampleDropdownFormC" >
     </div>
     <div class="form-group">
       
-      <label for="exampleDropdownFormdate">Expirey Date</label>
-      <input type="text" name="date"  class="form-control" id="exampleDropdownFormdate" placeholder="Expirey Date">
+      <label style="
+      color: black;
+  " for="exampleDropdownFormdate">Expirey Date</label>
+      <input type="date" name="date"  class="form-control brdr" id="exampleDropdownFormdate" >
     </div>
     <div class="form-group">
-      <input type="file" class="form-control"  name="file" id="exampleDropdownFormimg" >
+      <label style="
+      color: black;
+  " for="exampleDropdownFormdate">Upload Image</label>
+      <input type="file" class="form-control brdr"  name="file" id="exampleDropdownFormimg" >
     </div>
 
 
@@ -465,29 +478,7 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.min.js?v=3.0.4"></script>
-  <!-- DELETE MODEL -->
- 
-<!-- delete Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       Are You Sure You Want To Delete This Record?
-      </div>
-      <form action="delete/{id}" method="get">
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">no</button>
-        </div>
-      </form>
-    </div>
-  </div> -->
-</div>
+  </div>
 </body>
 
 </html>
