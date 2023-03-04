@@ -29,6 +29,8 @@ Route::view('products','products');
 Route::post('product',[WebController::class,'addproduct']);
 Route::get('products',[WebController::class,'showproduct']);
 Route::get('delete/{id}',[WebController::class,'delete']);
+Route::get('edit/{id}',[WebController::class,'fetchdata']);
+Route::post('edit',[WebController::class,'updateproduct']);
 
 
 

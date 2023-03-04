@@ -276,8 +276,13 @@
                     </tr>
                   </thead>
                   <tbody>
+
+
+                  @foreach($products as $product)
+                  
+
                    <tr>
-                    @foreach($products as $product)
+                    
                     <td>
                       <div class="d-flex px-2 py-1">
                         {{-- <div>
@@ -309,14 +314,15 @@
                       width: 50px;
                   " alt="" srcset="">
                     </td>
-                    <td> <button type="button" class="btn btn-dark">Edit</button>
-                    </td>
+                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLong3<?php echo $product['id'];?>" class="btn btn-dark editbtn">Edit</button>
+                    
+                  </td>
                     <td>
                       <a type="button"  class="btn btn-dark" href={{"delete/" .$product['id']}} OnClick="return confirm('Are You Sure You want to Delete Products')" >Delete</a></td>
                   </tr> 
-                  @endforeach      
+                   
       <tbody>
-    
+      @endforeach    
 </table>
 </div>
   </main>
@@ -459,6 +465,7 @@
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    
  
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
@@ -473,7 +480,10 @@
       }
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
+
   </script>
+  
+  
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
