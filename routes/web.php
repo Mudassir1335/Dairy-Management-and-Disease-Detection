@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 
-Route::view('web', 'mainweb');
+
 Route::view('cart', 'cart');
 Route::view('checkout', 'checkout');
 
@@ -31,6 +31,7 @@ Route::get('products',[WebController::class,'showproduct']);
 Route::get('delete/{id}',[WebController::class,'delete']);
 Route::get('edit/{id}',[WebController::class,'fetchdata']);
 Route::post('edit',[WebController::class,'updateproduct']);
+Route::get('mainweb',[WebController::class,'ShowProductWeb']);
 
 
 

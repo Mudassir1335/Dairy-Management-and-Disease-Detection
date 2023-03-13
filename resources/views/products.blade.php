@@ -314,7 +314,7 @@
                       width: 50px;
                   " alt="" srcset="">
                     </td>
-                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLong3<?php echo $product['id'];?>" class="btn btn-dark editbtn">Edit</button>
+                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg{{$product['id']}}" class="btn btn-dark editbtn">Edit</button>
                     
                   </td>
                     <td>
@@ -322,6 +322,62 @@
                   </tr> 
                    
       <tbody>
+        <!-- Edit MODEL -->
+ <div class="modal fade" id="exampleModalLongg{{$product['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Edit Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form class="px-4 py-3" action="/edit" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" value="{{$product['id']}}" name="id"/> 
+      <div class="form-group">
+      <label >Product Name</label>
+      <input type="text" name="pname" value="{{$product['product_name']}}" class="form-control"  placeholder="Product Name">
+    </div>
+    <div class="form-group">
+      
+      <label for="exampleDropdownFormPassword1">Price</label>
+      <input type=""  name="pprice" value="{{$product['price']}}" class="form-control" id="exampleDropdownFormPassword1" placeholder="Price">
+    </div>
+    <div class="form-group">
+      
+      <label for="exampleDropdownFormq">Quantity</label>
+      <input type="" name="quantity" value="{{$product['quantity']}}" class="form-control" id="exampleDropdownFormq" placeholder="Quantity">
+    </div>
+    <div class="form-group">
+      
+      <label for="exampleDropdownFormC">Category</label>
+      <input type="text" name="category" value="{{$product['category']}}" class="form-control" id="exampleDropdownFormC" placeholder="Category">
+    </div>
+    <div class="form-group">
+      
+      <label for="exampleDropdownFormdate">Expirey Date</label>
+      <input type="text" name="date" value="{{$product['expirey_date']}}" class="form-control" id="exampleDropdownFormdate" placeholder="Expirey Date">
+    </div>
+    <div class="form-group">
+      <input type="file" class="form-control"  name="file" id="exampleDropdownFormimg" >
+    </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+  </div>
+ 
+<!-- end edit model -->
+
+ 
       @endforeach    
 </table>
 </div>
@@ -460,7 +516,6 @@
   </div>
 </div>
 </div>
-
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>

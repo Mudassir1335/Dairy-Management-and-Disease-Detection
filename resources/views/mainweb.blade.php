@@ -139,24 +139,35 @@
                     
                     
                     <div class="row">
+                        @foreach($products as $product)
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
+                                <div class="product__item__pic set-bg" data-setbg="{{ asset("uploads/$product->product_image") }}">
+                                    {{-- <ul class="product__item__pic__hover">
+                                        <i class="fa fa-shopping-cart"></i>  <input class="fa fa-shopping-cart" type="button" value="button"> 
+                                         <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li> 
+                                    </ul> --}}
                                 </div>
                                 <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h6><a href="#">{{$product['product_name']}}</a></h6>
+                                    <h5>Rs. {{$product['price']}}/-</h5>
+                                    <form action="" method="post">
+                                        @csrf
+                                   <h6>Quantity</h6> <input  type="number" name="quantity" min="0" max="{{$product->quantity}}" value="0"  <?php if($product->quantity==0){ ?> disabled <?php } ?> > 
+                                   <input type="hidden" name="name" value="{{$product->product_name}}" >
+                                   <input type="hidden" name="price" value="{{$product->price}}" >
+                                        <input class="site-btn" type="submit" value="Add to Cart" <?php if($product->quantity==0){ ?> @disabled(true) <?php } ?> name="addcart">
+                                   
+                                    </form>
                                 </div>
+                                
                             </div>
+                            
                         </div>
                         
+                        @endforeach
                     </div>
-                    
+                   
                 </div>
             </div>
         </div>

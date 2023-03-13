@@ -8,7 +8,7 @@ use App\Models\Product;
 class WebController extends Controller
 {
     
-    function addproduct(Request $req)
+    public function addproduct(Request $req)
     {
         $product=new Product;
        
@@ -29,26 +29,26 @@ class WebController extends Controller
         return redirect('products');
 
     }
-    function showproduct()
+    public function showproduct()
     {
         $data= Product::all();
         return view('products',['products'=>$data]);
 
     }
-    function delete($id)
+    public function delete($id)
     {
         $data=Product::find($id);
         $data->delete();
         return redirect('products');
 
     }
-    function fetchdata($id)
-    {
-        $data= Product::find($id);
-        return view('edit',['products'=>$data]);
+    // function fetchdata($id)
+    // {
+    //     $data= Product::find($id);
+    //     return view('edit',['products'=>$data]);
 
-    }
-    function updateproduct(request $req)
+    // }
+    public function updateproduct(request $req)
     {
        
        $data=Product::find($req->id);
@@ -66,6 +66,31 @@ class WebController extends Controller
        
        $data->save();
        return redirect('products');
+
+
+    }
+    public function ShowProductWeb()
+    {
+        $data= Product::all();
+        return view('mainweb',['products'=>$data]);
+
+    }
+    public function AddToCart(Request $req){
+
+        $cart=session('cart'); 
+        $cart[] =[ 
+                
+                    "name" => $req->product_name,
+                    "price" => $req->price,
+                    "quantity" => $req->quantity,
+                    "pid"=>$req->pid,
+        ];
+           
+
+        session()->put('cart', $cart);
+
+        return redirect('');
+    
 
 
     }
