@@ -95,29 +95,48 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                $total=0;
+                                @endphp
+                            @if(session('cart'))
+    @foreach(session('cart') as $pid => $details)
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-1.jpg" alt="">
-                                        <h5>Vegetable’s Package</h5>
+                                        <img style="
+                                        max-width: 20%;
+                                    " src="{{ asset('uploads')}}/{{ $details['image'] }}" alt=""> 
+                                       
+                                        <h5>{{ $details['name'] }}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        $55.00
+                                        Rs. {{ $details['price'] }}/-
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
-                                            <div class="pro-qty">
+                                            {{-- <div class="pro-qty">
                                                 <input type="text" value="1">
-                                            </div>
+                                            </div> --}}
+                                            {{ $details['quantity'] }}
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                        $110.00
+                                       Rs. {{$details['price'] * $details['quantity']}}/-
                                     </td>
                                     <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
+                                       
+                                        <a href="delpro/{{$details['pid']}}">
+                                           <span class="icon_close"></span>
+                                    </a>
                                     </td>
                                 </tr>
-                               
+                                @php 
+                         
+                        $p=$details['price'] * $details['quantity'];
+                            
+                        $total=$total+$p;
+                             @endphp
+                                @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -126,7 +145,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                        <a href="mainweb" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
                         <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
                             Upadate Cart</a>
                     </div>
@@ -138,8 +157,8 @@
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span>$454.98</span></li>
-                            <li>Total <span>$454.98</span></li>
+                            <li>Subtotal <span>Rs. {{$total}}/-</span></li>
+                            <li>Total <span>Rs. {{$total}}/-</span></li>
                         </ul>
                         <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>

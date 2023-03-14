@@ -151,11 +151,13 @@
                                 <div class="product__item__text">
                                     <h6><a href="#">{{$product['product_name']}}</a></h6>
                                     <h5>Rs. {{$product['price']}}/-</h5>
-                                    <form action="" method="post">
+                                    <form action='addcart' method="post">
                                         @csrf
                                    <h6>Quantity</h6> <input  type="number" name="quantity" min="0" max="{{$product->quantity}}" value="0"  <?php if($product->quantity==0){ ?> disabled <?php } ?> > 
                                    <input type="hidden" name="name" value="{{$product->product_name}}" >
                                    <input type="hidden" name="price" value="{{$product->price}}" >
+                                   <input type="hidden" name="image" value="{{$product->product_image}}" >
+                                   <input type="hidden" name="pid" value="{{$product->id}}" >
                                         <input class="site-btn" type="submit" value="Add to Cart" <?php if($product->quantity==0){ ?> @disabled(true) <?php } ?> name="addcart">
                                    
                                     </form>

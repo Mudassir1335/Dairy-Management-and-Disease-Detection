@@ -80,18 +80,37 @@ class WebController extends Controller
         $cart=session('cart'); 
         $cart[] =[ 
                 
-                    "name" => $req->product_name,
+                    "name" => $req->name,
                     "price" => $req->price,
                     "quantity" => $req->quantity,
                     "pid"=>$req->pid,
+                    "image"=>$req->image,
         ];
            
 
         session()->put('cart', $cart);
 
-        return redirect('');
+        return  redirect()->back();
     
 
 
+    }
+    public function emptyCart(){
+        session()->forget('cart');
+
+    return  redirect()->back();
+
+
+    }
+    public function delcartPro($id)
+    {
+        $products = session()->get('cart');
+    foreach ($products as $index => $values) {
+        if($values['pid'] == $id){
+            unset($products[$index]);
+        }
+    }
+    session()->put('cart', $products);
+          return redirect()->back();
     }
 }

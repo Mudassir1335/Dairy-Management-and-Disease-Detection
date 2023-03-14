@@ -32,6 +32,8 @@ Route::get('delete/{id}',[WebController::class,'delete']);
 Route::get('edit/{id}',[WebController::class,'fetchdata']);
 Route::post('edit',[WebController::class,'updateproduct']);
 Route::get('mainweb',[WebController::class,'ShowProductWeb']);
+Route::post('addcart',[WebController::class,'AddToCart']);
 
-
+Route::get('emptycart',[WebController::class,'emptyCart']);
+Route::get('delpro/{pid}',[WebController::class,'delcartPro']);
 
