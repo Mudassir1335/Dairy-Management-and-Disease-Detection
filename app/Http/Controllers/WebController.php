@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-
+use Illuminate\Support\Facades\File;
 class WebController extends Controller
 {
     
@@ -52,19 +52,23 @@ class WebController extends Controller
     {
        
        $data=Product::find($req->id);
+       if($req->hasfile('product_image'))
+        {
+           
        $file=$req->file('file');
        $extenstion= $file->getClientOriginalExtension();
        $filename=time().'.' .$extenstion;
        $file->move('uploads',$filename);
-       
+        
        $data->product_image=$filename;
+        }
        $data->product_name=$req->pname;
        $data->price=$req->pprice;
        $data->quantity=$req->quantity;
        $data->category=$req->category;
        $data->expirey_date=$req->date;
        
-       $data->save();
+       $data->update();
        return redirect('products');
 
 
