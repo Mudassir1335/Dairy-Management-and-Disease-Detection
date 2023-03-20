@@ -52,7 +52,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary " href="{{url('products')}}">
+          <a class="nav-link text-white " href="{{url('products')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -84,7 +84,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('showsale')}}">
+          <a class="nav-link text-white active bg-gradient-primary" href="{{url('showsale')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>
             </div>
@@ -243,9 +243,7 @@
     </nav>
     <!-- End Navbar -->
     <div class="text-center">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Add product
-</button>
+   
 </div>
     <div class="container-fluid py-4">
       <div class="row">
@@ -253,7 +251,7 @@
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Product table</h6>
+                <h6 class="text-white text-capitalize ps-3">Sales Table</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -261,13 +259,19 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">First Name</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Last Name</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">City</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Phone</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product Name</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
+                       
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantity</th>
-                       
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Expirey date</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total</th>
+                      
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Order Date</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
                     
@@ -289,31 +293,44 @@
                           <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
                         </div> --}}
                         <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">{{$product['product_name']}}</h6>
+                          <h6 class="mb-0 text-sm">{{$product['first_name']}}</h6>
                           
                         </div>
                       </div>
                     </td>
                     <td>
-                      <p class="text-xs font-weight-bold mb-0">{{$product['category']}}</p>
+                      <p class="text-xs font-weight-bold mb-0">{{$product['last_name']}}</p>
                      
                     </td>
                     
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$product['price']}}</span>
+                      <span class="text-secondary text-xs font-weight-bold">{{$product['city']}}</span>
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$product['quantity']}}</span>
+                      <span class="text-secondary text-xs font-weight-bold">{{$product['address']}}</span>
                     </td>
                    
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$product['expirey_date']}}</span>
+                      <span class="text-secondary text-xs font-weight-bold">{{$product['phone']}}</span>
                     </td>
-                    <td>
-                      <img src="{{ asset("uploads/$product->product_image") }}" style="
-                      width: 50px;
-                  " alt="" srcset="">
-                    </td>
+                    <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{$product['email']}}</span>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{$product['product_name']}}</span>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{$product['price']}}</span>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{$product['quantity']}}</span>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{$product['total']}}</span>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{$product['created_at']}}</span>
+                      </td>
                     <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg{{$product['id']}}" class="btn btn-dark editbtn">Edit</button>
                     
                   </td>

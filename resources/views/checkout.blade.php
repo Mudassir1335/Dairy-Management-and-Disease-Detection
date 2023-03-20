@@ -76,37 +76,53 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
+    @php
+    $total=0;
+    $total_item=0;
+    @endphp
+@if(session('cart'))
 
+@foreach(session('cart') as $pid => $details)
+    @php 
+$total_item++;
+$p=$details['price'] * $details['quantity'];
+
+$total=$total+$p;
+
+ @endphp
+    @endforeach
+    @endif
     <!-- Checkout Section Begin -->
     <section class="checkout spad">
         <div class="container">
            
             <div class="checkout__form">
                 <h4>Billing Details</h4>
-                <form action="#">
+                <form action="managesale" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Fist Name<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" name="ftname">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Last Name<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" name="ltname">
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>City<span>*</span></p>
-                                <input type="text">
+                                <input type="text" name="city">
                             </div>
                             <div class="checkout__input">
                                 <p>Address<span>*</span></p>
-                                <input type="text" placeholder="Postal Address" class="checkout__input__add">
+                                <input type="text" name="address" placeholder="Postal Address" class="checkout__input__add">
                                
                             </div>
                             
@@ -114,13 +130,13 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Phone<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" name="phone">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Email<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" name="email">
                                     </div>
                                 </div>
                             </div>
@@ -130,11 +146,12 @@
                             <div class="checkout__order">
                                 <h4>Your Order</h4>
                                
-                                <div class="checkout__order__subtotal">Products <span>03</span></div>
-                                <div class="checkout__order__total">Total <span>$750.99</span></div>
+                                <div class="checkout__order__subtotal">Products <span>{{$total_item}}</span></div>
+                                <div class="checkout__order__total">Total <span>Rs. {{$total}}</span></div>
                                 <div class="checkout__input__checkbox">
                                    
-                                <button type="submit" class="site-btn">PLACE ORDER</button>
+                                <button type="submit" name="btn" class="site-btn">PLACE ORDER</button>
+                              
                             </div>
                         </div>
                     </div>
@@ -142,6 +159,7 @@
             </div>
         </div>
     </section>
+    
     <!-- Checkout Section End -->
 
     <!-- Footer Section Begin -->

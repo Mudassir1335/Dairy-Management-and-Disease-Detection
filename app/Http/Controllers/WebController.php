@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Managesale;
 
 class WebController extends Controller
 {
@@ -112,5 +113,34 @@ class WebController extends Controller
     }
     session()->put('cart', $products);
           return redirect()->back();
+    }
+    public function managesale(request $req)
+    {
+       
+
+        foreach(session('cart') as $pid => $details){
+      $data=new Managesale;
+      $data->first_name=$req->ftname;
+      $data->last_name=$req->ltname;
+      $data->city=$req->city;
+      $data->address=$req->address;
+      $data->phone=$req->phone;
+      $data->email=$req->email;
+      $data->product_name=$details['name'];
+      $data->price=$details['price'];;
+      $data->quantity=$details['quantity'];;
+      $data->total=$details['price'] * $details['quantity'];
+      $data->save();
+      $data=Product::where('product_name',$details['name'])->decrement('quantity', $details['quantity']);
+
+    }
+    session()->forget('cart');
+    return redirect()->back()->with('alert','Order Confirm');
+    }
+    public function showsale()
+    {
+        $data= Managesale::all();
+        return view('managesale',['products'=>$data]);
+
     }
 }

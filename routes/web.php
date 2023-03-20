@@ -36,4 +36,6 @@ Route::post('addcart',[WebController::class,'AddToCart']);
 
 Route::get('emptycart',[WebController::class,'emptyCart']);
 Route::get('delpro/{pid}',[WebController::class,'delcartPro']);
+Route::post('managesale',[WebController::class,'managesale']);
+Route::get('showsale',[WebController::class,'showsale']);
 

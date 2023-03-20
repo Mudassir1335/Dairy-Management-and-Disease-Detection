@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>Our Dairy</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -24,12 +24,12 @@
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    {{-- <div id="preloder">
+    {{-- <!-- Page Preloder -->
+    <div id="preloder">
         <div class="loader"></div>
     </div> --}}
 
-    
+   
     <!-- Header Section Begin -->
     <header class="header">
         
@@ -43,45 +43,22 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./blog.html">Blog</a></li>
+                            <li  class="active"><a href="./index.html">Home</a></li>
+                            <li class="active"><a href="./shop-grid.html">Shop</a></li>
+                           
+        
                             <li><a href="./contact.html">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
-                @php
-    $total=0;
-    $total_item=0;
-    @endphp
-@if(session('cart'))
-
-@foreach(session('cart') as $pid => $details)
-    @php 
-$total_item++;
-$p=$details['price'] * $details['quantity'];
-
-$total=$total+$p;
-
- @endphp
-    @endforeach
-    @endif
-    
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="cart"><i class="fa fa-shopping-bag"></i> <span>{{$total_item}}</span></a></li>
+                            {{-- <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li> --}}
+                            {{-- <li><a href="{{url('cart')}}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li> --}}
+                            <li><a href="{{url('cart')}}"><i class="fa fa-shopping-bag"></i> Cart</a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>Rs. {{$total}}</span></div>
+                       
                     </div>
                 </div>
             </div>
@@ -93,22 +70,11 @@ $total=$total+$p;
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-    <section class="hero">
+    <section class="hero hero-normal">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>All departments</span>
-                        </div>
-                        <ul>
-                            <li><a href="#">Milk</a></li>
-                                <li><a href="#">Yogurt</a></li>
-                                <li><a href="#">Cheese</a></li>
-                                <li><a href="#">Butter</a></li>
-                        </ul>
-                    </div>
+                   
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
@@ -124,17 +90,9 @@ $total=$total+$p;
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+92 34866915</h5>
+                                <h5>+92 3486698915</h5>
                                 <span>support 24/7 time</span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
-                        <div class="hero__text">
-                            <span>FRUIT FRESH</span>
-                            <h2>Vegetable <br />100% Organic</h2>
-                            <p>Free Pickup and Delivery Available</p>
-                            <a href="#" class="primary-btn">SHOP NOW</a>
                         </div>
                     </div>
                 </div>
@@ -143,45 +101,80 @@ $total=$total+$p;
     </section>
     <!-- Hero Section End -->
 
-    <!-- Featured Section Begin -->
-    <section class="featured spad">
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Featured Product</h2>
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Our Dairy</h2>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-5">
+                    <div class="sidebar">
+                        <div class="sidebar__item">
+                            <h4>Department</h4>
+                            <ul>
+                                <li><a href="#">Milk</a></li>
+                                <li><a href="#">Yogurt</a></li>
+                                <li><a href="#">Cheese</a></li>
+                                <li><a href="#">Butter</a></li>
+                                
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-7">
+                    
+                    
+                    <div class="row">
+                        @foreach($products as $product)
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="{{ asset("uploads/$product->product_image") }}">
+                                    {{-- <ul class="product__item__pic__hover">
+                                        <i class="fa fa-shopping-cart"></i>  <input class="fa fa-shopping-cart" type="button" value="button"> 
+                                         <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li> 
+                                    </ul> --}}
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">{{$product['product_name']}}</a></h6>
+                                    <h5>Rs. {{$product['price']}}/-</h5>
+                                    <form action='addcart' method="post">
+                                        @csrf
+                                   <h6>Quantity</h6> <input  type="number" name="quantity" min="0" max="{{$product->quantity}}" value="0"  <?php if($product->quantity==0){ ?> disabled <?php } ?> > 
+                                   <input type="hidden" name="name" value="{{$product->product_name}}" >
+                                   <input type="hidden" name="price" value="{{$product->price}}" >
+                                   <input type="hidden" name="image" value="{{$product->product_image}}" >
+                                   <input type="hidden" name="pid" value="{{$product->id}}" >
+                                        <input class="site-btn" type="submit" value="Add to Cart" <?php if($product->quantity==0){ ?> @disabled(true) <?php } ?> name="addcart">
+                                   
+                                    </form>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        
+                        @endforeach
                     </div>
                    
                 </div>
             </div>
-            <div class="row featured__filter">
-                @foreach($products as $product)
-                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="{{ asset("uploads/$product->product_image") }}">
-                            
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">{{$product['product_name']}}</a></h6>
-                            <h5>Rs. {{$product['price']}}/-</h5>
-                            <form action='addcart' method="post">
-                                @csrf
-                           <h6>Quantity</h6> <input  type="number" name="quantity" min="0" max="{{$product->quantity}}" value="0"  <?php if($product->quantity==0){ ?> disabled <?php } ?> > 
-                           <input type="hidden" name="name" value="{{$product->product_name}}" >
-                           <input type="hidden" name="price" value="{{$product->price}}" >
-                           <input type="hidden" name="image" value="{{$product->product_image}}" >
-                           <input type="hidden" name="pid" value="{{$product->id}}" >
-                                <input class="site-btn" type="submit" value="Add to Cart" <?php if($product->quantity==0){ ?> @disabled(true) <?php } ?> name="addcart">
-                           
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
         </div>
     </section>
-    <!-- Featured Section End -->
+    <!-- Product Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
@@ -223,7 +216,8 @@ $total=$total+$p;
         </div>
     </footer>
     <!-- Footer Section End -->
- <!-- Js Plugins -->
+
+    <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>
