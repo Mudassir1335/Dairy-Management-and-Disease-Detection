@@ -503,6 +503,9 @@
       <label style="
       color: black;
   " for="exampleDropdownFormdate">Upload Image</label>
+    <img src="{{ asset("uploads/$product->product_image") }}" style="
+                      width: 50px;
+                  " alt="" srcset="">
       <input type="file" class="form-control brdr"  name="file" id="exampleDropdownFormimg" >
     </div>
 
