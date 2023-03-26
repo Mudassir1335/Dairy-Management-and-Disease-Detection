@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebController;
+use App\Http\Controllers\websiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,21 +20,25 @@ Route::get('/', function () {
 
 });
 
-
-
-Route::view('cart', 'cart');
-Route::view('checkout', 'checkout');
-Route::view('dashboard', 'dashboard');
+// Admin Products panel
 Route::view('products','products');
 Route::post('product',[WebController::class,'addproduct']);
 Route::get('products',[WebController::class,'showproduct']);
 Route::get('delete/{id}',[WebController::class,'delete']);
 Route::get('edit/{id}',[WebController::class,'fetchdata']);
 Route::post('edit',[WebController::class,'updateproduct']);
-Route::get('mainweb',[WebController::class,'ShowProductWeb']);
-Route::post('addcart',[WebController::class,'AddToCart']);
-Route::get('emptycart',[WebController::class,'emptyCart']);
-Route::get('delpro/{pid}',[WebController::class,'delcartPro']);
-Route::post('managesale',[WebController::class,'managesale']);
-Route::get('showsale',[WebController::class,'showsale']);
+//Admin Manage Sales
+Route::post('managesale',[websiteController::class,'managesale']);
+Route::get('showsale',[websiteController::class,'showsale']);
+
+// Ecommerce Website
+Route::view('cart', 'cart');
+Route::view('checkout', 'checkout');
+Route::view('dashboard', 'dashboard');
+Route::get('mainweb',[websiteController::class,'ShowProductWeb']);
+Route::post('addcart',[websiteController::class,'AddToCart']);
+Route::get('emptycart',[websiteController::class,'emptyCart']);
+Route::get('delpro/{pid}',[websiteController::class,'delcartPro']);
+
+
 

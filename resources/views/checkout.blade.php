@@ -37,13 +37,17 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="./index.html"><h1 style="
+                            font-size: 50px;
+                            font-weight: 600;
+                            color: #6e9731;
+                        ">Our Dairy</h1></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./index.html">Home</a></li>
+                            <li><a href="mainweb">Home</a></li>
                             <li class="active"><a href="./shop-grid.html">Shop</a></li>
                            
                             <li><a href="./blog.html">Blog</a></li>
@@ -76,6 +80,15 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
+    @if(Session::has('message'))
+<p style="
+margin-top: 60px;
+margin-left: 97px;
+font-size: 25px;
+color: red;
+font-weight: 800;
+">{{ Session::get('message') }}</p>
+@endif
     @php
     $total=0;
     $total_item=0;

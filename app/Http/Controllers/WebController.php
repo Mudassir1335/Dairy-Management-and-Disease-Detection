@@ -1,15 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MailNotify;
 use Illuminate\Http\Request;
 use App\Models\Product;
-<<<<<<< HEAD
 use App\Models\Managesale;
-
-=======
 use Illuminate\Support\Facades\File;
->>>>>>> 0207b57a9dc1fae19c442ef2234acce6a07aeb68
+
 class WebController extends Controller
 {
     
@@ -57,7 +55,7 @@ class WebController extends Controller
     {
        
        $data=Product::find($req->id);
-       if($req->hasfile('product_image'))
+       if($req->hasfile('file'))
         {
            
        $file=$req->file('file');
@@ -78,77 +76,8 @@ class WebController extends Controller
 
 
     }
-    public function ShowProductWeb()
-    {
-        $data= Product::all();
-        return view('mainweb',['products'=>$data]);
-
-    }
-    public function AddToCart(Request $req){
-
-        $cart=session('cart'); 
-        $cart[] =[ 
-                
-                    "name" => $req->name,
-                    "price" => $req->price,
-                    "quantity" => $req->quantity,
-                    "pid"=>$req->pid,
-                    "image"=>$req->image,
-        ];
-           
-
-        session()->put('cart', $cart);
-
-        return  redirect()->back();
+    
+    
     
 
-
-    }
-    public function emptyCart(){
-        session()->forget('cart');
-
-    return  redirect()->back();
-
-
-    }
-    public function delcartPro($id)
-    {
-        $products = session()->get('cart');
-    foreach ($products as $index => $values) {
-        if($values['pid'] == $id){
-            unset($products[$index]);
-        }
-    }
-    session()->put('cart', $products);
-          return redirect()->back();
-    }
-    public function managesale(request $req)
-    {
-       
-
-        foreach(session('cart') as $pid => $details){
-      $data=new Managesale;
-      $data->first_name=$req->ftname;
-      $data->last_name=$req->ltname;
-      $data->city=$req->city;
-      $data->address=$req->address;
-      $data->phone=$req->phone;
-      $data->email=$req->email;
-      $data->product_name=$details['name'];
-      $data->price=$details['price'];;
-      $data->quantity=$details['quantity'];;
-      $data->total=$details['price'] * $details['quantity'];
-      $data->save();
-      $data=Product::where('product_name',$details['name'])->decrement('quantity', $details['quantity']);
-
-    }
-    session()->forget('cart');
-    return redirect()->back()->with('alert','Order Confirm');
-    }
-    public function showsale()
-    {
-        $data= Managesale::all();
-        return view('managesale',['products'=>$data]);
-
-    }
 }

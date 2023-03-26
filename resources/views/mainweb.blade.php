@@ -37,7 +37,11 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="./index.html"><h1 style="
+                            font-size: 50px;
+                            font-weight: 600;
+                            color: #6e9731;
+                        ">Our Dairy</h1></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -45,16 +49,7 @@
                         <ul>
                             <li class="active"><a href="./index.html">Home</a></li>
                             <li><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                           
                         </ul>
                     </nav>
                 </div>
@@ -78,7 +73,7 @@ $total=$total+$p;
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                           
                             <li><a href="cart"><i class="fa fa-shopping-bag"></i> <span>{{$total_item}}</span></a></li>
                         </ul>
                         <div class="header__cart__price">item: <span>Rs. {{$total}}</span></div>
@@ -129,12 +124,12 @@ $total=$total+$p;
                             </div>
                         </div>
                     </div>
-                    <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
+                    <div class="hero__item set-bg" data-setbg="img/slide2.avif" style="border: 2px #c7c6c6 solid;">
                         <div class="hero__text">
-                            <span>FRUIT FRESH</span>
+                            {{-- <span>FRUIT FRESH</span>
                             <h2>Vegetable <br />100% Organic</h2>
-                            <p>Free Pickup and Delivery Available</p>
-                            <a href="#" class="primary-btn">SHOP NOW</a>
+                            <p>Free Pickup and Delivery Available</p> --}}
+                            {{-- <a href="#" class="primary-btn">SHOP NOW</a> --}}
                         </div>
                     </div>
                 </div>
