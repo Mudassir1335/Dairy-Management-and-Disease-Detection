@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\websiteController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,9 @@ Route::post('edit',[WebController::class,'updateproduct']);
 //Admin Manage Sales
 Route::post('managesale',[websiteController::class,'managesale']);
 Route::get('showsale',[websiteController::class,'showsale']);
+Route::get('deletesale/{id}',[websiteController::class,'deletesales']);
+
+
 
 // Ecommerce Website
 Route::view('cart', 'cart');
@@ -39,6 +43,10 @@ Route::get('mainweb',[websiteController::class,'ShowProductWeb']);
 Route::post('addcart',[websiteController::class,'AddToCart']);
 Route::get('emptycart',[websiteController::class,'emptyCart']);
 Route::get('delpro/{pid}',[websiteController::class,'delcartPro']);
-
-
-
+// Admin Category panel
+Route::view('category','category');
+Route::post('category',[CategoryController::class,'addcategory']);
+Route::get('category',[CategoryController::class,'showcategory']);
+Route::get('delete/{id}',[CategoryController::class,'delete']);
+Route::get('edit/{id}',[CategoryController::class,'fetchdata']);
+Route::post('edit',[CategoryController::class,'updateproduct']);

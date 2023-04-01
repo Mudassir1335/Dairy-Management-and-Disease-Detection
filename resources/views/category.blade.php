@@ -22,12 +22,21 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.4" rel="stylesheet" />
 <style>
+  img {
+  border-radius: 60%;
+}
   .brdr{
     
     border: solid 1px;
     margin-left: 5px;
 
   }
+  .brdr:active {
+    border: solid black 1px;
+}
+  .brdr:link {
+    border: solid black 1px;
+}
 </style>
 </head>
 
@@ -52,7 +61,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('products')}}">
+          <a class="nav-link text-white active bg-gradient-primary " href="{{url('products')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -84,7 +93,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="{{url('showsale')}}">
+          <a class="nav-link text-white " href="{{url('showsale')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>
             </div>
@@ -243,7 +252,9 @@
     </nav>
     <!-- End Navbar -->
     <div class="text-center">
-   
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+  Add Category
+</button>
 </div>
     <div class="container-fluid py-4">
       <div class="row">
@@ -251,7 +262,7 @@
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Sales Table</h6>
+                <h6 class="text-white text-capitalize ps-3">Category table</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -259,89 +270,43 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">First Name</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Last Name</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">City</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Phone</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product Name</th>
-                       
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantity</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total</th>
-                      
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Order Date</th>
-                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
                     
                     
                       <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
                   <tbody>
-
-
-                  @foreach($products as $product)
+                  @foreach($categories as $category)
                   
 
-                   <tr>
-                    
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        {{-- <div>
-                          <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-                        </div> --}}
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">{{$product['first_name']}}</h6>
-                          
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">{{$product['last_name']}}</p>
-                     
-                    </td>
-                    
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$product['city']}}</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$product['address']}}</span>
-                    </td>
+                  <tr>
                    
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$product['phone']}}</span>
-                    </td>
-                    <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['email']}}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['product_name']}}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['price']}}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['quantity']}}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['total']}}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['created_at']}}</span>
-                      </td>
+                   <td>
+                     <div class="d-flex px-2 py-1">
+                      
+                       <div class="d-flex flex-column justify-content-center">
+                         <h6 class="mb-0 text-sm">{{$category['category_name']}}</h6>
+                         
+                       </div>
+                     </div>
+                   </td>
+
+                   <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg{{$category['id']}}" class="btn btn-dark editbtn">Edit</button>
                     
-                    <td>
-                      <a type="button"  class="btn btn-dark" href={{"deletesale/" .$product['id']}} OnClick="return confirm('Are You Sure You want to Delete Sales')" >Delete</a></td>
-                  </tr> 
-                   
-      <tbody>
-        <!-- Edit MODEL -->
- <div class="modal fade" id="exampleModalLongg{{$product['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    </td>
+                      <td>
+                        <a type="button"  class="btn btn-dark" href={{"delete/" .$category['id']}}  OnClick="return confirm('Are You Sure You want to Delete Products')"  >Delete</a></td>
+                    </tr> 
+                  
+<!-- Edit MODEL -->
+<div class="modal fade" id="exampleModalLongg{{$category['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Edit Product</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Edit Category</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -349,34 +314,13 @@
       <div class="modal-body">
       <form class="px-4 py-3" action="/edit" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="hidden" value="{{$product['id']}}" name="id"/> 
+        <input type="hidden" value="{{$category['id']}}" name="id"/> 
       <div class="form-group">
-      <label >Product Name</label>
-      <input type="text" name="pname" value="{{$product['product_name']}}" class="form-control"  placeholder="Product Name">
+      <label >Category Name</label>
+      <input type="text" name="cname" value="{{$category['category_name']}}" class="form-control"  placeholder="Category Name">
     </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormPassword1">Price</label>
-      <input type=""  name="pprice" value="{{$product['price']}}" class="form-control" id="exampleDropdownFormPassword1" placeholder="Price">
-    </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormq">Quantity</label>
-      <input type="" name="quantity" value="{{$product['quantity']}}" class="form-control" id="exampleDropdownFormq" placeholder="Quantity">
-    </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormC">Category</label>
-      <input type="text" name="category" value="{{$product['category']}}" class="form-control" id="exampleDropdownFormC" placeholder="Category">
-    </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormdate">Expirey Date</label>
-      <input type="text" name="date" value="{{$product['expirey_date']}}" class="form-control" id="exampleDropdownFormdate" placeholder="Expirey Date">
-    </div>
-    <div class="form-group">
-      <input type="file" class="form-control"  name="file" id="exampleDropdownFormimg" >
-    </div>
+    
+    
 
 
       <div class="modal-footer">
@@ -390,9 +334,8 @@
   </div>
  
 <!-- end edit model -->
-
  
-      @endforeach    
+                   @endforeach    
 </table>
 </div>
   </main>
@@ -471,56 +414,21 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Category</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <form class="px-4 py-3" action="product" method="POST" enctype="multipart/form-data">
+      <form class="px-4 py-3" action="category" method="POST" enctype="multipart/form-data">
         @csrf
       <div class="form-group">
       <label style="
       color: black;
-  ">Product Name</label>
-      <input type="text" name="pname" class="form-control brdr"  >
+  ">Category Name</label>
+      <input type="text" name="cname" class="form-control brdr"  >
     </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormPassword1">Price</label>
-      <input type=""  name="pprice" class="form-control brdr" id="exampleDropdownFormPassword1" >
-    </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormq">Quantity</label>
-      <input type="" name="quantity"  class="form-control brdr" id="exampleDropdownFormq" >
-    </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormC">Category</label>
-      <input type="text" name="category"  class="form-control brdr" id="exampleDropdownFormC" >
-    </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormdate">Expirey Date</label>
-      <input type="date" name="date"  class="form-control brdr" id="exampleDropdownFormdate" >
-    </div>
-    <div class="form-group">
-      <label style="
-      color: black;
-  " for="exampleDropdownFormdate">Upload Image</label>
-      <input type="file" class="form-control brdr"  name="file" id="exampleDropdownFormimg" >
-    </div>
-
-
+    
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
