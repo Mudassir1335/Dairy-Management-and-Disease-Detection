@@ -22,12 +22,21 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.4" rel="stylesheet" />
 <style>
+  img {
+  border-radius: 60%;
+}
   .brdr{
     
     border: solid 1px;
     margin-left: 5px;
 
   }
+  .brdr:active {
+    border: solid black 1px;
+}
+  .brdr:link {
+    border: solid black 1px;
+}
 </style>
 </head>
 
@@ -285,9 +294,7 @@
                     
                     <td>
                       <div class="d-flex px-2 py-1">
-                        {{-- <div>
-                          <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-                        </div> --}}
+                       
                         <div class="d-flex flex-column justify-content-center">
                           <h6 class="mb-0 text-sm">{{$product['product_name']}}</h6>
                           
@@ -503,9 +510,9 @@
       <label style="
       color: black;
   " for="exampleDropdownFormdate">Upload Image</label>
-    <img src="{{ asset("uploads/$product->product_image") }}" style="
+    {{-- <img src="{{ asset("uploads/$product->product_image") }}" style="
                       width: 50px;
-                  " alt="" srcset="">
+                  " alt="" srcset=""> --}}
       <input type="file" class="form-control brdr"  name="file" id="exampleDropdownFormimg" >
     </div>
 
