@@ -324,10 +324,13 @@
                     <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg{{$product['id']}}" class="btn btn-dark editbtn">Edit</button>
                     
                   </td>
+
+
                     <td>
-                      <a type="button"  class="btn btn-dark" href={{"delete/" .$product['id']}} OnClick="return confirm('Are You Sure You want to Delete Products')" >Delete</a></td>
+                      <a type="button"  class="btn btn-dark" href={{"deleteproduct/" .$product['id']}} OnClick="return confirm('Are You Sure You want to Delete Products')" >Delete</a></td>
                   </tr> 
                    
+                  
       <tbody>
         <!-- Edit MODEL -->
  <div class="modal fade" id="exampleModalLongg{{$product['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -340,7 +343,7 @@
         </button>
       </div>
       <div class="modal-body">
-      <form class="px-4 py-3" action="/edit" method="POST" enctype="multipart/form-data">
+      <form class="px-4 py-3" action="/editproduct" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" value="{{$product['id']}}" name="id"/> 
       <div class="form-group">

@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\websiteController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EmployeeController;
+
+use App\Http\Controllers\AdminController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +29,29 @@ Route::get('/', function () {
 Route::view('products','products');
 Route::post('product',[WebController::class,'addproduct']);
 Route::get('products',[WebController::class,'showproduct']);
-Route::get('delete/{id}',[WebController::class,'delete']);
+Route::get('deleteproduct/{id}',[WebController::class,'deleteproduct']);
 Route::get('edit/{id}',[WebController::class,'fetchdata']);
-Route::post('edit',[WebController::class,'updateproduct']);
+Route::post('editproduct',[WebController::class,'updateproduct']);
+
+
+//  employee panel
+Route::view('employees','employees');
+ Route::post('employee',[EmployeeController::class,'addEmployee']);
+Route::get('employees',[EmployeeController::class,'showEmployee']);
+ Route::get('deleteEmployee/{id}',[EmployeeController::class,'deleteEmployee']);
+ Route::post('editEmployee',[EmployeeController::class,'updateEmployee']);
+
+
+// Admin  panel
+Route::view('admins','admins');
+Route::post('admin',[AdminController::class,'addAdmin']);
+Route::get('admins',[AdminController::class,'showAdmin']);
+Route::get('deleteadmin/{id}',[AdminController::class,'deleteadmin']);
+Route::post('editAdmin',[AdminController::class,'updateAdmin']);
+
+
+
+
 //Admin Manage Sales
 Route::post('managesale',[websiteController::class,'managesale']);
 Route::get('showsale',[websiteController::class,'showsale']);

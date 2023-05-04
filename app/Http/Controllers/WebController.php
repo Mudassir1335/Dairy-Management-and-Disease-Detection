@@ -38,7 +38,7 @@ class WebController extends Controller
         return view('products',['products'=>$data]);
 
     }
-    public function delete($id)
+    public function deleteproduct($id)
     {
         $data=Product::find($id);
         $data->delete();
