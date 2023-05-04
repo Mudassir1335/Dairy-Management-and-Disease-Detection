@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\websiteController;
+use App\Http\Controllers\animalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,14 @@ Route::get('mainweb',[websiteController::class,'ShowProductWeb']);
 Route::post('addcart',[websiteController::class,'AddToCart']);
 Route::get('emptycart',[websiteController::class,'emptyCart']);
 Route::get('delpro/{pid}',[websiteController::class,'delcartPro']);
+
+// Manage Animals
+
+Route::get('animals',[animalController::class,'showAnimals']);
+Route::get('deleteanimal/{id}',[animalController::class,'deleteanimal']);
+Route::post('addanimals',[animalController::class,'addanimal']);
+Route::post('update-animal/{id}',[animalController::class,'updateanimal']);
+Route::get('/get-all-animal-delivery-dates', [animalController::class,'getAllDeliveryDates']);
 
 
 

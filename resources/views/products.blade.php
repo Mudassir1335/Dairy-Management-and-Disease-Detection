@@ -266,7 +266,9 @@
               </div>
             </div>
             <div class="card-body px-0 pb-2">
-              <div class="table-responsive p-0">
+              <div class="table-responsive p-0" style="
+              overflow-y: hidden;
+          ">
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
@@ -385,9 +387,12 @@
 <!-- end edit model -->
 
  
-      @endforeach    
+      @endforeach  
+ 
 </table>
 </div>
+
+
   </main>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
