@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,21 +21,12 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.4" rel="stylesheet" />
 <style>
-  img {
-  border-radius: 60%;
-}
   .brdr{
     
     border: solid 1px;
     margin-left: 5px;
 
   }
-  .brdr:active {
-    border: solid black 1px;
-}
-  .brdr:link {
-    border: solid black 1px;
-}
 </style>
 </head>
 
@@ -77,11 +67,11 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('category')}}">
+          <a class="nav-link text-white " href="../pages/virtual-reality.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">view_in_ar</i>
             </div>
-            <span class="nav-link-text ms-1">Category</span>
+            <span class="nav-link-text ms-1">Report</span>
           </a>
         </li>
         <li class="nav-item">
@@ -93,7 +83,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('showsale')}}">
+          <a class="nav-link text-white " href="../pages/notifications.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>
             </div>
@@ -112,21 +102,22 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/sign-in.html">
+          <a class="nav-link text-white " href="register">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">login</i>
             </div>
-            <span class="nav-link-text ms-1">Sign In</span>
+            <span class="nav-link-text ms-1">register</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/sign-up.html">
+          <a class="nav-link text-white " href="login">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
-            <span class="nav-link-text ms-1">Sign Up</span>
+            <span class="nav-link-text ms-1">login</span>
           </a>
         </li>
+        
       </ul>
     </div>
     
@@ -253,7 +244,7 @@
     <!-- End Navbar -->
     <div class="text-center">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Add product
+  Add Employee
 </button>
 </div>
     <div class="container-fluid py-4">
@@ -262,22 +253,21 @@
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Product table</h6>
+                <h6 class="text-white text-capitalize ps-3">Employee table</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
-              <div class="table-responsive p-0" style="
-              overflow-y: hidden;
-          ">
+              <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product Name</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantity</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">First Name</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Last Name </th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">CNIC</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
                        
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Expirey date</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">salary</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Gander</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
@@ -287,55 +277,55 @@
                     </tr>
                   </thead>
                   <tbody>
-
-
-                  @foreach($products as $product)
-                  
+                  @foreach($employees as $emp)
 
                    <tr>
                     
                     <td>
                       <div class="d-flex px-2 py-1">
-                       
+                        {{-- <div>
+                          <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                        </div> --}} 
                         <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">{{$product['product_name']}}</h6>
+                          <h6 class="mb-0 text-sm">{{$emp['first_name']}}</h6>
                           
                         </div>
                       </div>
                     </td>
                     <td>
-                      <p class="text-xs font-weight-bold mb-0">{{$product['category']}}</p>
+                      <p class="text-xs font-weight-bold mb-0">{{$emp['last_name']}}</p>
                      
                     </td>
                     
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$product['price']}}</span>
+                      <span class="text-secondary text-xs font-weight-bold" >{{$emp['cnic']}}</span>
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$product['quantity']}}</span>
+                      <span class="text-secondary text-xs font-weight-bold">{{$emp['email']}}</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">{{$emp['salary']}}</span>
                     </td>
                    
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$product['expirey_date']}}</span>
+                      <span class="text-secondary text-xs font-weight-bold">{{$emp['gender']}}</span>
                     </td>
+                  
                     <td>
-                      <img src="{{ asset("uploads/$product->product_image") }}" style="
+                      <img src="uploads/{{$ad['admin_image']}}" style="
                       width: 50px;
                   " alt="" srcset="">
                     </td>
-                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg{{$product['id']}}" class="btn btn-dark editbtn">Edit</button>
+                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg" class="btn btn-dark editbtn">Edit</button>
                     
                   </td>
-
-
                     <td>
-                      <a type="button"  class="btn btn-dark" href={{"deleteproduct/" .$product['id']}} OnClick="return confirm('Are You Sure You want to Delete Products')" >Delete</a></td>
+                      <a type="button"  href={{"deleteEmployee/" .$emp['id']}}  class="btn btn-dark"  OnClick="return confirm('Are You Sure You want to Delete Products')" >Delete</a></td>
                   </tr> 
                    
-                  
       <tbody>
         <!-- Edit MODEL -->
- <div class="modal fade" id="exampleModalLongg{{$product['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+ <div class="modal fade" id="exampleModalLongg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -345,35 +335,40 @@
         </button>
       </div>
       <div class="modal-body">
-      <form class="px-4 py-3" action="/editproduct" method="POST" enctype="multipart/form-data">
+      <form class="px-4 py-3" action="/editEmployee" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="hidden" value="{{$product['id']}}" name="id"/> 
+        <input type="hidden" value="{{$emp['id']}}" name="id"/> 
       <div class="form-group">
-      <label >Product Name</label>
-      <input type="text" name="pname" value="{{$product['product_name']}}" class="form-control"  placeholder="Product Name">
+      <label >First Name</label>
+      <input type="text" name="fname" value="{{$emp['first_name']}}" class="form-control"  placeholder="First Name">
     </div>
     <div class="form-group">
       
-      <label for="exampleDropdownFormPassword1">Price</label>
-      <input type=""  name="pprice" value="{{$product['price']}}" class="form-control" id="exampleDropdownFormPassword1" placeholder="Price">
+      <label for="exampleDropdownFormPassword1">Last Name</label>
+      <input type=""  name="lname" value="{{$emp['last_name']}}" class="form-control" id="exampleDropdownFormPassword1" placeholder="Last Name ">
     </div>
     <div class="form-group">
       
-      <label for="exampleDropdownFormq">Quantity</label>
-      <input type="" name="quantity" value="{{$product['quantity']}}" class="form-control" id="exampleDropdownFormq" placeholder="Quantity">
+      <label for="exampleDropdownFormq">CNIC</label>
+      <input type="" name="cnic" value="{{$emp['cnic']}}" class="form-control" id="exampleDropdownFormq" placeholder="CNIC">
     </div>
     <div class="form-group">
       
-      <label for="exampleDropdownFormC">Category</label>
-      <input type="text" name="category" value="{{$product['category']}}" class="form-control" id="exampleDropdownFormC" placeholder="Category">
+      <label for="exampleDropdownFormC">email</label>
+      <input type="text" name="email" value="{{$emp['email']}}" class="form-control" id="exampleDropdownFormC" placeholder="email">
     </div>
     <div class="form-group">
       
-      <label for="exampleDropdownFormdate">Expirey Date</label>
-      <input type="text" name="date" value="{{$product['expirey_date']}}" class="form-control" id="exampleDropdownFormdate" placeholder="Expirey Date">
+      <label for="exampleDropdownFormdate">Salary</label>
+      <input type="text" name="salary" value="{{$emp['salary']}}"class="form-control" id="exampleDropdownFormdate" placeholder="Salary">
     </div>
     <div class="form-group">
-      <input type="file" class="form-control"  name="file" id="exampleDropdownFormimg" >
+      
+      <label for="exampleDropdownFormdate">Gender</label>
+      <input type="text" name="gender" value="{{$emp['gender']}}"class="form-control" id="exampleDropdownFormdate" placeholder="Gender">
+    </div>
+    <div class="form-group">
+      <input type="file" class="form-control"  name="emppic" id="exampleDropdownFormimg" >
     </div>
 
 
@@ -386,16 +381,13 @@
   </div>
 </div>
   </div>
- 
+  @endforeach;
 <!-- end edit model -->
 
  
-      @endforeach  
  
 </table>
 </div>
-
-
   </main>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
@@ -464,7 +456,7 @@
 
 
   
-		
+   
 		
 		
 <!-- Modal -->
@@ -472,56 +464,65 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Employee</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <form class="px-4 py-3" action="product" method="POST" enctype="multipart/form-data">
+      <form class="px-4 py-3" action="employee" method="post"  enctype="multipart/form-data">
         @csrf
       <div class="form-group">
       <label style="
       color: black;
-  ">Product Name</label>
-      <input type="text" name="pname" class="form-control brdr"  >
+  ">First Name</label>
+      <input type="text" name="fname" value="{{old('fname')}}" placeholder="Muhammad" class="form-control brdr"  >
     </div>
     <div class="form-group">
       
       <label style="
       color: black;
-  " for="exampleDropdownFormPassword1">Price</label>
-      <input type=""  name="pprice" class="form-control brdr" id="exampleDropdownFormPassword1" >
+  " for="exampleDropdownFormPassword1">Last Name</label>
+      <input type=""  name="lname" value="{{old('lname')}}" placeholder="bilal" class="form-control brdr" id="exampleDropdownFormPassword1" >
     </div>
     <div class="form-group">
       
       <label style="
       color: black;
-  " for="exampleDropdownFormq">Quantity</label>
-      <input type="" name="quantity"  class="form-control brdr" id="exampleDropdownFormq" >
+  " for="exampleDropdownFormq">CNIC</label>
+      <input type="" name="cnic" value="{{old('cnic')}}" pattern="[0-9]{5}[0-9]{7}[0-9]{1}" placeholder="xxxxx-xxxxxxx-x"  class="form-control brdr" id="exampleDropdownFormq" >
     </div>
     <div class="form-group">
       
       <label style="
       color: black;
-  " for="exampleDropdownFormC">Category</label>
-      <input type="text" name="category"  class="form-control brdr" id="exampleDropdownFormC" >
+  " for="exampleDropdownFormC">Email</label>
+      <input type="email" name="email" value="{{old('email')}}" placeholder="abc@mail.com"  class="form-control brdr" id="exampleDropdownFormC" >
     </div>
     <div class="form-group">
       
       <label style="
       color: black;
-  " for="exampleDropdownFormdate">Expirey Date</label>
-      <input type="date" name="date"  class="form-control brdr" id="exampleDropdownFormdate" >
+  " for="exampleDropdownFormC">Salary</label>
+      <input type="cash" name="salary" value="{{old('salary')}}" placeholder="10000-2000000"  class="form-control brdr" id="exampleDropdownFormC" >
+    </div>
+    <div class="form-group">
+      <lable>select gender :</lable>
+      <label style="
+      color: black;
+  " for="male">male</label>
+      <input type="radio" checked name="gender" value="male" id="male" >
+      <label style="
+      color: black;
+  " for="female">female</label>
+      <input type="radio" name="gender" value="female" id="female" >
+    
     </div>
     <div class="form-group">
       <label style="
       color: black;
-  " for="exampleDropdownFormdate">Upload Image</label>
-    {{-- <img src="{{ asset("uploads/$product->product_image") }}" style="
-                      width: 50px;
-                  " alt="" srcset=""> --}}
-      <input type="file" class="form-control brdr"  name="file" id="exampleDropdownFormimg" >
+  " for="exampleDropdownFormdate">Upload PIcture</label>
+      <input type="file" class="form-control brdr"  name="emppic" id="exampleDropdownFormimg" >
     </div>
 
 

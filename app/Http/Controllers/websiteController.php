@@ -17,6 +17,13 @@ class websiteController extends Controller
         return view('mainweb',['products'=>$data]);
 
     }
+    public function deletesales($id)
+    {
+        $dataa=Managesale::find($id);
+        $dataa->delete();
+        return redirect()->back();
+
+    }
     public function AddToCart(Request $req){
 
         $cart=session('cart'); 
@@ -77,11 +84,11 @@ class websiteController extends Controller
       $dataa->price=$details['price'];
       $dataa->quantity=$details['quantity'];
       $dataa->total=$details['price'] * $details['quantity'];
-      $data=[
-        'subject'=>"",
-        'body'=>"Thanks For Shoping. You will receive your Parcel within 3 to 4 Days. If You have any Query Contact us On 0348-6698915"
-    ];
-    Mail::to($req->email)->send(new MailNotify($data));
+    //   $data=[
+    //     'subject'=>"",
+    //     'body'=>"Thanks For Shoping. You will receive your Parcel within 3 to 4 Days. If You have any Query Contact us On 0348-6698915"
+    // ];
+    // Mail::to($req->email)->send(new MailNotify($data));
       $dataa->save();
       $dataa=Product::where('product_name',$details['name'])->decrement('quantity', $details['quantity']);
 
@@ -92,6 +99,6 @@ class websiteController extends Controller
     return redirect()->back()->with(Session::flash('message', 'Your order is successfuly placed. Thanks For Shoping.')); 
    
     }
-   
+    
     
     }

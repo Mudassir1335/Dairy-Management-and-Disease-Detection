@@ -68,11 +68,11 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/virtual-reality.html">
+          <a class="nav-link text-white " href="{{url('category')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">view_in_ar</i>
             </div>
-            <span class="nav-link-text ms-1">Report</span>
+            <span class="nav-link-text ms-1">Category</span>
           </a>
         </li>
         <li class="nav-item">
@@ -274,8 +274,7 @@
                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total</th>
                       
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Order Date</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
+                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
                     
                     
                       <th class="text-secondary opacity-7"></th>
@@ -333,11 +332,9 @@
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold">{{$product['created_at']}}</span>
                       </td>
-                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg{{$product['id']}}" class="btn btn-dark editbtn">Edit</button>
                     
-                  </td>
                     <td>
-                      <a type="button"  class="btn btn-dark" href={{"delete/" .$product['id']}} OnClick="return confirm('Are You Sure You want to Delete Products')" >Delete</a></td>
+                      <a type="button"  class="btn btn-dark" href={{"deletesale/" .$product['id']}} OnClick="return confirm('Are You Sure You want to Delete Sales')" >Delete</a></td>
                   </tr> 
                    
       <tbody>
