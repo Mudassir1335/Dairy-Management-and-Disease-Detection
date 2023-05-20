@@ -7,6 +7,7 @@ use App\Http\Controllers\animalController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MilkRecordController;
 
 
 
@@ -89,3 +90,10 @@ Route::get('delete/{id}',[CategoryController::class,'delete']);
 Route::get('edit/{id}',[CategoryController::class,'fetchdata']);
 Route::post('edit',[CategoryController::class,'updateproduct']);
 
+
+// Manage Milk Record
+Route::view('milkrecords','milkrecords');
+Route::get('milkrecords',[MilkRecordController::class,'showmilkrecord']);
+Route::post('milkrecords',[MilkRecordController::class,'addmilkrecord']);
+Route::get('deletemilkrecord/{id}',[MilkRecordController::class,'deletemilkrecord']);
+Route::post('editmilkrecord',[MilkRecordController::class,'updatemilkrecord']);
