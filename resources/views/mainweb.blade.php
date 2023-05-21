@@ -94,23 +94,18 @@ $total=$total+$p;
                 <div class="col-lg-3">
                     <div class="hero__categories">
                         <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                           <span>Dairy Products</span>
+                            
                         </div>
-                        <ul>
-                            <li><a href="#">Milk</a></li>
-                                <li><a href="#">Yogurt</a></li>
-                                <li><a href="#">Cheese</a></li>
-                                <li><a href="#">Butter</a></li>
-                        </ul>
+                       
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
+                            <form  action="{{ route('products.search') }}" method="GET">
                                
-                                <input type="text" placeholder="What do yo u need?">
+                                <input type="text" name="search" placeholder="What do yo u need?">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
                         </div>

@@ -99,7 +99,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('animals')}}">
+          <a class="nav-link text-white active bg-gradient-primary" href="{{url('animals')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
@@ -115,7 +115,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="{{url('milkrecords')}}">
+          <a class="nav-link text-white " href="{{url('milkrecords')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
             </div>
@@ -192,11 +192,14 @@
               <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank" >Detect disease</a>
             </li>
             <li class="nav-item d-flex align-items-center">
-              <a href="../pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
-                <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
+              <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link text-body font-weight-bold px-0">
+                  <i class="fa fa-user me-sm-1"></i>
+                  <span class="d-sm-inline d-none">Logout</span>
               </a>
-            </li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+          </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
@@ -799,36 +802,7 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  
-{{-- <script>
-  $(document).ready(function() {
-      $.ajax({
-          url: '/get-all-animal-delivery-dates',
-          type: 'GET',
-          dataType: 'json',
-          success: function(data) {
-              // Process the JSON data and check if any delivery dates are within 7 days
-              var deliveryDates = data.delivery_dates;
-              var now = new Date();
-              var count = 0;
-              var message = "";
-              deliveryDates.forEach(function(deliveryDate) {
-                  var date = new Date(deliveryDate.date);
-                  var cowName = deliveryDate.cow_code;
-                  var diff = date.getTime() - now.getTime();
-                  var days = Math.ceil(diff / (1000 * 3600 * 24));
-                  if (days <= 7) {
-                      count++;
-                      message += count + ". ( " + cowName + " ) delivery date is coming up in " + days + " days!\n";
-                      $('#alert').append(count+".  ( " + cowName + " ) delivery date is coming up in " + days + " days!<br>");
-                    }
-              });
-              if (count > 0) {
-                  alert(message);
-              }
-          } 
-      });
-  });
-</script> --}}
+
 <script>
   $(document).ready(function() {
       $.ajax({

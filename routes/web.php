@@ -69,6 +69,9 @@ Route::get('mainweb',[websiteController::class,'ShowProductWeb']);
 Route::post('addcart',[websiteController::class,'AddToCart']);
 Route::get('emptycart',[websiteController::class,'emptyCart']);
 Route::get('delpro/{pid}',[websiteController::class,'delcartPro']);
+Route::get('/products/search', [websiteController::class, 'search'])->name('products.search');
+
+
 
 
 // Manage Animals
@@ -108,4 +111,5 @@ Route::get('milkrecords',[MilkRecordController::class,'showmilkrecord']);
 Route::post('milkrecords',[MilkRecordController::class,'addmilkrecord']);
 Route::get('deletemilkrecord/{id}',[MilkRecordController::class,'deletemilkrecord']);
 Route::post('editmilkrecord',[MilkRecordController::class,'updatemilkrecord']);
-
+Route::get('/check-milk-record', [MilkRecordController::class, 'checkMilkRecord'])->name('check.milk.record');
+Route::post('/autocomplete/fetch', [MilkRecordController::class, 'fetch'])->name('autocomplete.fetch');

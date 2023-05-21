@@ -38,6 +38,35 @@
     border: solid black 1px;
 }
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function(){
+   $("#myinput").on("keyup", function() {
+     var value = $(this).val().toLowerCase();
+     $("#mytable tbody tr").filter(function() {
+       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+     });
+ 
+     // show the table header row only if there are visible rows in the tbody
+     if ($("#mytable tbody tr:visible").length > 0) {
+       $("#mytable thead").show();
+       $("#message").hide();
+     } else {
+       $("#mytable thead").hide();
+       $("#message").text("No results found.").show();
+     }
+ 
+     // move the first visible row to the top of the table
+     $("#mytable tbody tr:first-child").before($("#mytable tbody tr:visible:first"));
+   });
+ });
+ 
+ 
+ 
+ 
+ 
+ 
+   </script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -154,7 +183,7 @@
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <div class="input-group input-group-outline">
               <label class="form-label">Type here...</label>
-              <input type="text" class="form-control">
+              <input type="text" id="myinput" class="form-control">
             </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
@@ -162,11 +191,14 @@
               <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank" >Detect disease</a>
             </li>
             <li class="nav-item d-flex align-items-center">
-              <a href="../pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
-                <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
+              <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link text-body font-weight-bold px-0">
+                  <i class="fa fa-user me-sm-1"></i>
+                  <span class="d-sm-inline d-none">Logout</span>
               </a>
-            </li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+          </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
@@ -277,7 +309,7 @@
               <div class="table-responsive p-0" style="
               overflow-y: hidden;
           ">
-                <table class="table align-items-center mb-0">
+                <table id="mytable" class="table align-items-center mb-0">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date</th>
@@ -494,8 +526,12 @@
       <label style="
       color: black;
   " for="exampleDropdownFormPassword1">Cow Code</label>
-      <input type=""  name="ccode" class="form-control brdr" id="exampleDropdownFormPassword1" >
+      <input type=""  name="ccode" id="ccode"class="form-control brdr" id="exampleDropdownFormPassword1" >
+      
     </div>
+    <ul id="cowlist" style="
+    color: black;
+" class="dropdown-menu"></ul>
     <div class="form-group">
       
       <label style="
@@ -558,6 +594,55 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.min.js?v=3.0.4"></script>
   </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+        // AJAX request to check milk record
+        $.ajax({
+            url: '{{ route("check.milk.record") }}',
+            method: 'GET',
+            success: function(response) {
+                // Check if alerts are needed
+                if (response.alerts.length > 0) {
+                    var message = response.alerts.join('\n');
+                    alert(message);
+                }
+            },
+            error: function() {
+                console.log('Error occurred while checking milk record.');
+            }
+        });
+    });
+</script>
+<script>
+  $(document).ready(function(){
+   
+      $('#ccode').keyup(function(){ 
+          var query = $(this).val(); 
+          if(query != '')
+          {
+              var _token = $('input[name="_token"]').val();
+              $.ajax({
+                  url:"{{ route('autocomplete.fetch') }}",
+                  method:"POST",
+                  data:{query:query, _token:_token},
+                  success:function(data){
+                  $('#cowlist').fadeIn();  
+                      $('#cowlist').html(data);
+                  }
+              });
+          }
+      });
+   
+      $(document).on('click', 'li', function(){  
+          $('#ccode').val($(this).text());  
+          $('#cowlist').fadeOut();  
+      });  
+   
+  });
+  </script>
+
 </body>
 
 </html>
