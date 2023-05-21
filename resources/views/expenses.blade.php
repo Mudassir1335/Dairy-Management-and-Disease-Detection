@@ -244,8 +244,29 @@
     <!-- End Navbar -->
     <div class="text-center">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Add Employee
+  Add Expense
 </button>
+ @php
+    $total=0; 
+    
+     @endphp 
+     @foreach($expenses as $exp)
+    @php 
+$price = $exp['expense_amount'];
+
+$total+=$price;
+
+ @endphp
+    @endforeach
+
+    
+
+</div>
+<div class="text-right">
+  <lable>Total Expense:</label>
+    <input type="text" value="{{$total}}" name="totalexpense" class="form_control"  data-target="#exampleModalLong">
+  
+
 </div>
     <div class="container-fluid py-4">
       <div class="row">
@@ -253,7 +274,7 @@
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Employee table</h6>
+                <h6 class="text-white text-capitalize ps-3">Expense table</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -261,15 +282,12 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">First Name</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Last Name </th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">CNIC</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Expense Details</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Expense Amount</th>
                        
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">salary</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Gander</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
+                  
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">EDIT</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
                     
                     
@@ -277,99 +295,68 @@
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach($employees as $emp)
-
+                  
+                  @foreach($expenses as $exp)
                    <tr>
-                    
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        {{-- <div>
-                          <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-                        </div> --}} 
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">{{$emp['first_name']}}</h6>
-                          
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">{{$emp['last_name']}}</p>
-                     
-                    </td>
+                   
+                   
                     
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold" >{{$emp['cnic']}}</span>
+                      <span class="text-secondary text-xs font-weight-bold" >{{$exp['date']}}</span>
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$emp['email']}}</span>
+                      <span class="text-secondary text-xs font-weight-bold">{{$exp['expense_details']}}</span>
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$emp['salary']}}</span>
+                      <span class="text-secondary text-xs font-weight-bold">{{$exp['expense_amount']}}</span>
                     </td>
                    
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$emp['gender']}}</span>
-                    </td>
+                   
                   
-                    <td>
-                      <img src="uploads/{{$emp['employee_image']}}" style="
-                      width: 50px;
-                  " alt="" srcset="">
-                    </td>
-                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg{{$emp['id']}}" class="btn btn-dark editbtn">Edit</button>
+                   
+                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg{{$exp['id']}}" class="btn btn-dark editbtn">Edit</button>
                     
                   </td>
                     <td>
-                      <a type="button"  href={{"deleteEmployee/" .$emp['id']}}  class="btn btn-dark"  OnClick="return confirm('Are You Sure You want to Delete Products')" >Delete</a></td>
+                      <a type="button" href={{"deleteexpense/" .$exp['id']}}    class="btn btn-dark"  OnClick="return confirm('Are You Sure You want to Delete Expense')" >Delete</a></td>
                   </tr> 
                    
       <tbody>
         <!-- Edit MODEL -->
- <div class="modal fade" id="exampleModalLongg{{$emp['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+ <div class="modal fade" id="exampleModalLongg{{$exp['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Edit Product</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Edit Expense</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <form class="px-4 py-3" action="/editEmployee" method="POST" enctype="multipart/form-data">
+      <form class="px-4 py-3"action="/editExpense"  method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="hidden" value="{{$emp['id']}}" name="id"/>  
-      <div class="form-group">
-      <label >First Name</label>
-      <input type="text" name="fname" value="{{$emp['first_name']}}" class="form-control"  placeholder="First Name">
+        <div class="form-group">
+      <label style="
+      color: black;
+  ">Date</label>
+      <input  type="date" name="date" value="{{$exp['date']}}"  class="form-control brdr"  >
+    </div>
+    
+    <div class="form-group">
+      
+      <label style="
+      color: black;
+  " for="exampleDropdownFormq">Expene Details</label>
+      <input type="text" name="expensedetail" value="{{$exp['expense_details']}}"   class="form-control brdr" id="exampleDropdownFormq" >
     </div>
     <div class="form-group">
       
-      <label for="exampleDropdownFormPassword1">Last Name</label>
-      <input type=""  name="lname" value="{{$emp['last_name']}}" class="form-control" id="exampleDropdownFormPassword1" placeholder="Last Name ">
+      <label style="
+      color: black;
+  " for="exampleDropdownFormC">Expense Amount</label>
+      <input type="text" name="expenseamount" value="{{$exp['expense_amount']}}"  class="form-control brdr" id="exampleDropdownFormC" >
     </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormq">CNIC</label>
-      <input type="" name="cnic" value="{{$emp['cnic']}}" class="form-control" id="exampleDropdownFormq" placeholder="CNIC">
-    </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormC">email</label>
-      <input type="text" name="email" value="{{$emp['email']}}" class="form-control" id="exampleDropdownFormC" placeholder="email">
-    </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormdate">Salary</label>
-      <input type="text" name="salary" value="{{$emp['salary']}}"class="form-control" id="exampleDropdownFormdate" placeholder="Salary">
-    </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormdate">Gender</label>
-      <input type="text" name="gender" value="{{$emp['gender']}}"class="form-control" id="exampleDropdownFormdate" placeholder="Gender">
-    </div>
-    <div class="form-group">
-      <input type="file" class="form-control"  name="emppic" id="exampleDropdownFormimg" >
-    </div>
+    
 
 
       <div class="modal-footer">
@@ -381,10 +368,10 @@
   </div>
 </div>
   </div>
-  @endforeach;
+ 
 <!-- end edit model -->
 
- 
+@endforeach;
  
 </table>
 </div>
@@ -464,66 +451,37 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add Employee</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Expense</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <form class="px-4 py-3" action="employee" method="post"  enctype="multipart/form-data">
+      <form class="px-4 py-3" action="expense" method="POST"  enctype="multipart/form-data">
         @csrf
       <div class="form-group">
       <label style="
       color: black;
-  ">First Name</label>
-      <input type="text" name="fname" value="{{old('fname')}}" placeholder="Muhammad" class="form-control brdr"  >
+  ">Date</label>
+      <input type="date" name="date" value="{{old('date')}}"  class="form-control brdr"  >
     </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormPassword1">Last Name</label>
-      <input type=""  name="lname" value="{{old('lname')}}" placeholder="bilal" class="form-control brdr" id="exampleDropdownFormPassword1" >
-    </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormq">CNIC</label>
-      <input type="" name="cnic" value="{{old('cnic')}}" pattern="[0-9]{5}[0-9]{7}[0-9]{1}" placeholder="xxxxx-xxxxxxx-x"  class="form-control brdr" id="exampleDropdownFormq" >
-    </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormC">Email</label>
-      <input type="email" name="email" value="{{old('email')}}" placeholder="abc@mail.com"  class="form-control brdr" id="exampleDropdownFormC" >
-    </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormC">Salary</label>
-      <input type="cash" name="salary" value="{{old('salary')}}" placeholder="10000-2000000"  class="form-control brdr" id="exampleDropdownFormC" >
-    </div>
-    <div class="form-group">
-      <lable>select gender :</lable>
-      <label style="
-      color: black;
-  " for="male">male</label>
-      <input type="radio" checked name="gender" value="male" id="male" >
-      <label style="
-      color: black;
-  " for="female">female</label>
-      <input type="radio" name="gender" value="female" id="female" >
     
-    </div>
     <div class="form-group">
+      
       <label style="
       color: black;
-  " for="exampleDropdownFormdate">Upload PIcture</label>
-      <input type="file" class="form-control brdr"  name="employeepic" id="exampleDropdownFormimg" >
+  " for="exampleDropdownFormq">Expene Details</label>
+      <input type="" name="expensedetail" value="{{old('expensedetail')}}"   class="form-control brdr" id="exampleDropdownFormq" >
     </div>
+    <div class="form-group">
+      
+      <label style="
+      color: black;
+  " for="exampleDropdownFormC">Expense Amount</label>
+      <input type="text" name="expenseamount" value="{{old('expenseamount')}}"  class="form-control brdr" id="exampleDropdownFormC" >
+    </div>
+    
+    
 
 
       <div class="modal-footer">

@@ -314,7 +314,7 @@
                       width: 50px;
                   " alt="" srcset="">
                     </td>
-                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg" class="btn btn-dark editbtn">Edit</button>
+                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg{{$ad['id']}}" class="btn btn-dark editbtn">Edit</button>
                     
                   </td>
                     <td>
@@ -323,7 +323,7 @@
                    
       <tbody>
         <!-- Edit MODEL -->
- <div class="modal fade" id="exampleModalLongg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+ <div class="modal fade" id="exampleModalLongg{{$ad['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -361,7 +361,7 @@
       <input type="password" name="password" value="{{$ad['password']}}" class="form-control" id="exampleDropdownFormdate" placeholder="password">
     </div>
     <div class="form-group">
-      <input type="file" class="form-control"   name="file" id="exampleDropdownFormimg" >
+      <input type="file" class="form-control"   name="adminpic" id="exampleDropdownFormimg" >
     </div>
 
 
