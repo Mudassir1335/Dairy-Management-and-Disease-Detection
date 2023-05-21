@@ -30,10 +30,10 @@ class expenseController extends Controller
         return view('expenses',['expenses'=>$data]);
 
     }
-    public function updateExpense(request $req)
+    public function updateExpense(request $req , $id)
     {
        
-       $exp=expense::find($req->id);
+       $exp=expense::find($id);
        
        $exp->date=$req->date;
        $exp->expense_details=$req->expensedetail;

@@ -8,6 +8,9 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\expenseController;
+use App\Http\Controllers\MilkRecordController;
+
+
 
 
 /*
@@ -48,7 +51,7 @@ Route::view('expenses','expenses');
 Route::post('expense',[expenseController::class,'addExpense']);
 Route::get('expenses',[expenseController::class,'showExpense']);
 Route::get('deleteexpense/{id}',[expenseController::class,'deletexpense']);
-Route::post('editExpense',[expenseController::class,'updateExpense']);
+Route::post('editExpense/{id}',[expenseController::class,'updateExpense']);
 
 // Admin  panel
 Route::view('admins','admins');
@@ -75,6 +78,9 @@ Route::get('mainweb',[websiteController::class,'ShowProductWeb']);
 Route::post('addcart',[websiteController::class,'AddToCart']);
 Route::get('emptycart',[websiteController::class,'emptyCart']);
 Route::get('delpro/{pid}',[websiteController::class,'delcartPro']);
+Route::get('/products/search', [websiteController::class, 'search'])->name('products.search');
+
+
 
 
 // Manage Animals
@@ -96,3 +102,27 @@ Route::get('delete/{id}',[CategoryController::class,'delete']);
 Route::get('edit/{id}',[CategoryController::class,'fetchdata']);
 Route::post('edit',[CategoryController::class,'updateproduct']);
 
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    // Routes that require authentication
+  
+    // Add more authenticated routes here
+});
+
+
+// Manage Milk Record
+Route::view('milkrecords','milkrecords');
+Route::get('milkrecords',[MilkRecordController::class,'showmilkrecord']);
+Route::post('milkrecords',[MilkRecordController::class,'addmilkrecord']);
+Route::get('deletemilkrecord/{id}',[MilkRecordController::class,'deletemilkrecord']);
+Route::post('editmilkrecord',[MilkRecordController::class,'updatemilkrecord']);
+Route::get('/check-milk-record', [MilkRecordController::class, 'checkMilkRecord'])->name('check.milk.record');
+Route::post('/autocomplete/fetch', [MilkRecordController::class, 'fetch'])->name('autocomplete.fetch');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

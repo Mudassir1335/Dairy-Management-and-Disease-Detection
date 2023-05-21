@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,13 +22,51 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.4" rel="stylesheet" />
 <style>
+  img {
+  border-radius: 60%;
+}
   .brdr{
     
     border: solid 1px;
     margin-left: 5px;
 
   }
+  .brdr:active {
+    border: solid black 1px;
+}
+  .brdr:link {
+    border: solid black 1px;
+}
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function(){
+   $("#myinput").on("keyup", function() {
+     var value = $(this).val().toLowerCase();
+     $("#mytable tbody tr").filter(function() {
+       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+     });
+ 
+     // show the table header row only if there are visible rows in the tbody
+     if ($("#mytable tbody tr:visible").length > 0) {
+       $("#mytable thead").show();
+       $("#message").hide();
+     } else {
+       $("#mytable thead").hide();
+       $("#message").text("No results found.").show();
+     }
+ 
+     // move the first visible row to the top of the table
+     $("#mytable tbody tr:first-child").before($("#mytable tbody tr:visible:first"));
+   });
+ });
+ 
+ 
+ 
+ 
+ 
+ 
+   </script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -51,7 +90,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary " href="{{url('products')}}">
+          <a class="nav-link text-white  " href="{{url('products')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -59,7 +98,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/billing.html">
+          <a class="nav-link text-white " href="{{url('animals')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
@@ -67,15 +106,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/virtual-reality.html">
+          <a class="nav-link text-white " href="{{url('category')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">view_in_ar</i>
             </div>
-            <span class="nav-link-text ms-1">Report</span>
+            <span class="nav-link-text ms-1">Category</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/rtl.html">
+          <a class="nav-link text-white active bg-gradient-primary" href="{{url('milkrecords')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
             </div>
@@ -83,7 +122,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/notifications.html">
+          <a class="nav-link text-white " href="{{url('showsale')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>
             </div>
@@ -94,7 +133,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/profile.html">
+          <a class="nav-link text-white " href="{{url('employees')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person</i>
             </div>
@@ -102,22 +141,29 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="register">
+          <a class="nav-link text-white " href="{{url('admins')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">login</i>
+              <i class="material-icons opacity-10">person</i>
             </div>
-            <span class="nav-link-text ms-1">register</span>
+            <span class="nav-link-text ms-1">Manage Admins</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="login">
+          <a class="nav-link text-white " href="../pages/sign-in.html">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">login</i>
+            </div>
+            <span class="nav-link-text ms-1">Sign In</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="../pages/sign-up.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
-            <span class="nav-link-text ms-1">login</span>
+            <span class="nav-link-text ms-1">Sign Up</span>
           </a>
         </li>
-        
       </ul>
     </div>
     
@@ -137,7 +183,7 @@
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <div class="input-group input-group-outline">
               <label class="form-label">Type here...</label>
-              <input type="text" class="form-control">
+              <input type="text" id="myinput" class="form-control">
             </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
@@ -145,11 +191,14 @@
               <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank" >Detect disease</a>
             </li>
             <li class="nav-item d-flex align-items-center">
-              <a href="../pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
-                <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
+              <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link text-body font-weight-bold px-0">
+                  <i class="fa fa-user me-sm-1"></i>
+                  <span class="d-sm-inline d-none">Logout</span>
               </a>
-            </li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+          </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
@@ -244,29 +293,8 @@
     <!-- End Navbar -->
     <div class="text-center">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Add Expense
+  Add Milk Record
 </button>
- @php
-    $total=0; 
-    
-     @endphp 
-     @foreach($expenses as $exp)
-    @php 
-$price = $exp['expense_amount'];
-
-$total+=$price;
-
- @endphp
-    @endforeach
-
-    
-
-</div>
-<div class="text-right">
-  
-    <!-- <input type="text" value="{{$total}}" name="totalexpense" class="form_control"  data-target="#exampleModalLong"> -->
-  <h6>Total Expense:  {{$total}}  </h6>
-
 </div>
     <div class="container-fluid py-4">
       <div class="row">
@@ -274,20 +302,24 @@ $total+=$price;
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Expense table</h6>
+                <h6 class="text-white text-capitalize ps-3">Milk Record</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
+              <div class="table-responsive p-0" style="
+              overflow-y: hidden;
+          ">
+                <table id="mytable" class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Expense Details</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Expense Amount</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Cow Code</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Morning</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Evening</th>
                        
-                  
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">EDIT</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total Milk</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Reason</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
                     
                     
@@ -295,68 +327,91 @@ $total+=$price;
                     </tr>
                   </thead>
                   <tbody>
+
+
+                  @foreach($records as $record)
                   
-                  @foreach($expenses as $exp)
+
                    <tr>
-                   
-                   
+                    
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                       
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">{{$record['date']}}</h6>
+                          
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="text-xs font-weight-bold mb-0">{{$record['cow_code']}}</p>
+                     
+                    </td>
                     
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold" >{{$exp['date']}}</span>
+                      <span class="text-secondary text-xs font-weight-bold">{{$record['morning']}}</span>
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$exp['expense_details']}}</span>
+                      <span class="text-secondary text-xs font-weight-bold">{{$record['evening']}}</span>
                     </td>
+                   
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$exp['expense_amount']}}</span>
+                      <span class="text-secondary text-xs font-weight-bold">{{$record['total']}}</span>
                     </td>
+                    <td>
+                    <span class="text-secondary text-xs font-weight-bold">{{$record['reason']}}</span>
                    
-                   
-                  
-                   
-                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg{{$exp['id']}}" class="btn btn-dark editbtn">Edit</button>
+                     </td>
+                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg{{$record['id']}}" class="btn btn-dark editbtn">Edit</button>
                     
                   </td>
+
+
                     <td>
-                      <a type="button" href={{"deleteexpense/" .$exp['id']}}    class="btn btn-dark"  OnClick="return confirm('Are You Sure You want to Delete Expense')" >Delete</a></td>
+                      <a type="button"  class="btn btn-dark" href={{"deletemilkrecord/" .$record['id']}} OnClick="return confirm('Are You Sure You want to Delete Records')" >Delete</a></td>
                   </tr> 
                    
+                  
       <tbody>
-        <!-- Edit MODEL -->
- <div class="modal fade" id="exampleModalLongg{{$exp['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <!--  Edit MODEL-->
+ <div class="modal fade" id="exampleModalLongg{{$record['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Edit Expense</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Edit Milk Record</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <form class="px-4 py-3"action="{{ url('editExpense/'.$exp->id) }}"  method="POST" enctype="multipart/form-data">
+      <form class="px-4 py-3" action="/editmilkrecord" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="form-group">
-      <label style="
-      color: black;
-  ">Date</label>
-      <input  type="date" name="date" value="{{$exp['date']}}"  class="form-control brdr"  >
+        <input type="hidden" value="{{$record['id']}}" name="id"/> 
+      <div class="form-group">
+      <label >Date</label>
+      <input type="date" name="date" value="{{$record['date']}}" class="form-control"  placeholder="date">
+    </div>
+    <div class="form-group">
+      
+      <label for="exampleDropdownFormPassword1">Cow Code</label>
+      <input type=""  name="ccode" value="{{$record['cow_code']}}" class="form-control" id="exampleDropdownFormPassword1" placeholder="cow_code">
+    </div>
+    <div class="form-group">
+      
+      <label for="exampleDropdownFormq">Morning</label>
+      <input type="" name="morning" value="{{$record['morning']}}" class="form-control" id="exampleDropdownFormq" placeholder="Morning">
+    </div>
+    <div class="form-group">
+      
+      <label for="exampleDropdownFormC">Evening</label>
+      <input type="text" name="evening" value="{{$record['evening']}}" class="form-control" id="exampleDropdownFormC" placeholder="Evening">
     </div>
     
     <div class="form-group">
       
-      <label style="
-      color: black;
-  " for="exampleDropdownFormq">Expene Details</label>
-      <input type="text" name="expensedetail" value="{{$exp['expense_details']}}"   class="form-control brdr" id="exampleDropdownFormq" >
+      <label for="exampleDropdownFormdate">Reason</label>
+      <input type="text" name="reason" value="{{$record['reason']}}" class="form-control" id="exampleDropdownFormdate" placeholder="reason">
     </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormC">Expense Amount</label>
-      <input type="text" name="expenseamount" value="{{$exp['expense_amount']}}"  class="form-control brdr" id="exampleDropdownFormC" >
-    </div>
-    
 
 
       <div class="modal-footer">
@@ -369,12 +424,13 @@ $total+=$price;
 </div>
   </div>
  
-<!-- end edit model -->
 
-@endforeach;
+      @endforeach  
  
 </table>
 </div>
+
+
   </main>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
@@ -391,7 +447,7 @@ $total+=$price;
             <i class="material-icons">clear</i>
           </button>
         </div>
-        <!-- End Toggle Button -->
+        <!-- End Toggle Button-->
       </div>
       <hr class="horizontal dark my-1">
       <div class="card-body pt-sm-3 pt-0">
@@ -443,7 +499,7 @@ $total+=$price;
 
 
   
-   
+		
 		
 		
 <!-- Modal -->
@@ -451,36 +507,53 @@ $total+=$price;
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add Expense</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Milk Record</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <form class="px-4 py-3" action="expense" method="POST"  enctype="multipart/form-data">
+      <form class="px-4 py-3" action="milkrecords" method="POST" enctype="multipart/form-data">
         @csrf
       <div class="form-group">
       <label style="
       color: black;
   ">Date</label>
-      <input type="date" name="date" value="{{old('date')}}"  class="form-control brdr"  >
+      <input type="date" name="date" class="form-control brdr"  >
+    </div>
+    <div class="form-group">
+      
+      <label style="
+      color: black;
+  " for="exampleDropdownFormPassword1">Cow Code</label>
+      <input type=""  name="ccode" id="ccode"class="form-control brdr" id="exampleDropdownFormPassword1" >
+      
+    </div>
+    <ul id="cowlist" style="
+    color: black;
+" class="dropdown-menu"></ul>
+    <div class="form-group">
+      
+      <label style="
+      color: black;
+  " for="exampleDropdownFormq">Morning</label>
+      <input type="" name="morning"  class="form-control brdr" id="exampleDropdownFormq" >
+    </div>
+    <div class="form-group">
+      
+      <label style="
+      color: black;
+  " for="exampleDropdownFormC">Evening</label>
+      <input type="text" name="evening"  class="form-control brdr" id="exampleDropdownFormC" >
     </div>
     
     <div class="form-group">
       
       <label style="
       color: black;
-  " for="exampleDropdownFormq">Expene Details</label>
-      <input type="" name="expensedetail" value="{{old('expensedetail')}}"   class="form-control brdr" id="exampleDropdownFormq" >
+  " for="exampleDropdownFormdate">Reason</label>
+      <input type="text" name="reason"  class="form-control brdr" id="exampleDropdownFormdate" >
     </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormC">Expense Amount</label>
-      <input type="text" name="expenseamount" value="{{old('expenseamount')}}"  class="form-control brdr" id="exampleDropdownFormC" >
-    </div>
-    
     
 
 
@@ -521,6 +594,55 @@ $total+=$price;
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.min.js?v=3.0.4"></script>
   </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+        // AJAX request to check milk record
+        $.ajax({
+            url: '{{ route("check.milk.record") }}',
+            method: 'GET',
+            success: function(response) {
+                // Check if alerts are needed
+                if (response.alerts.length > 0) {
+                    var message = response.alerts.join('\n');
+                    alert(message);
+                }
+            },
+            error: function() {
+                console.log('Error occurred while checking milk record.');
+            }
+        });
+    });
+</script>
+<script>
+  $(document).ready(function(){
+   
+      $('#ccode').keyup(function(){ 
+          var query = $(this).val(); 
+          if(query != '')
+          {
+              var _token = $('input[name="_token"]').val();
+              $.ajax({
+                  url:"{{ route('autocomplete.fetch') }}",
+                  method:"POST",
+                  data:{query:query, _token:_token},
+                  success:function(data){
+                  $('#cowlist').fadeIn();  
+                      $('#cowlist').html(data);
+                  }
+              });
+          }
+      });
+   
+      $(document).on('click', 'li', function(){  
+          $('#ccode').val($(this).text());  
+          $('#cowlist').fadeOut();  
+      });  
+   
+  });
+  </script>
+
 </body>
 
 </html>
