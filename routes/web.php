@@ -89,3 +89,13 @@ Route::get('delete/{id}',[CategoryController::class,'delete']);
 Route::get('edit/{id}',[CategoryController::class,'fetchdata']);
 Route::post('edit',[CategoryController::class,'updateproduct']);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    // Routes that require authentication
+  
+    // Add more authenticated routes here
+});
+
