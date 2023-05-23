@@ -47,8 +47,8 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./index.html">Home</a></li>
-                            <li class="active"><a href="./shop-grid.html">Shop</a></li>
+                            <li><a href="{{url('mainweb')}}">Home</a></li>
+                            <li class="active"><a href="{{url('mainweb')}}">Shop</a></li>
                             
                             
                         </ul>
@@ -177,8 +177,12 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
-                        <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <div class="header__logo">
+                            <a href="./index.html"><h1 style="
+                                font-size: 50px;
+                                font-weight: 600;
+                                color: #6e9731;
+                            ">Our Dairy</h1></a>
                         </div>
                         <ul>
                             <li>Address: Sargodha</li>

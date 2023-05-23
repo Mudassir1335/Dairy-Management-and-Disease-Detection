@@ -69,7 +69,7 @@ Route::get('mainweb',[websiteController::class,'ShowProductWeb']);
 Route::post('addcart',[websiteController::class,'AddToCart']);
 Route::get('emptycart',[websiteController::class,'emptyCart']);
 Route::get('delpro/{pid}',[websiteController::class,'delcartPro']);
-Route::get('/products/search', [websiteController::class, 'search'])->name('products.search');
+
 
 
 
