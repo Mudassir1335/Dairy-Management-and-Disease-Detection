@@ -77,7 +77,7 @@ public function checkMilkRecord()
 
         $previousDayRecord = $previousDayRecords->where('cow_code', $currentDayRecord->cow_code)->first();
         if ($previousDayRecord && $currentDayRecord->total < $previousDayRecord->total) {
-            $alerts[] = 'Cow ' . $currentDayRecord->cow_code . ' has less milk than yesterday. Please enter less milk Reason';
+            $alerts[] =  $currentDayRecord->cow_code . ' has less milk than yesterday. Please enter less milk Reason';
         }
     }
 

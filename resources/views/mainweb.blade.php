@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>Our Dairy</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -47,8 +47,8 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
+                            <li class="active"><a href="{{url('mainweb')}}">Home</a></li>
+                            <li><a href="{{url('mainweb')}}">Shop</a></li>
                            
                         </ul>
                     </nav>
@@ -91,7 +91,7 @@ $total=$total+$p;
     <section class="hero">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+                {{-- <div class="col-lg-3">
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                            <span>Dairy Products</span>
@@ -99,11 +99,11 @@ $total=$total+$p;
                         </div>
                        
                     </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
+                </div> --}}
+                <div class="col-lg-12">
+                    {{-- <div class="hero__search">
                         <div class="hero__search__form">
-                            <form  action="{{ route('products.search') }}" method="GET">
+                            <form  action="" method="GET">
                                
                                 <input type="text" name="search" placeholder="What do yo u need?">
                                 <button type="submit" class="site-btn">SEARCH</button>
@@ -118,7 +118,7 @@ $total=$total+$p;
                                 <span>support 24/7 time</span>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="hero__item set-bg" data-setbg="img/slide2.avif" style="border: 2px #c7c6c6 solid;">
                         <div class="hero__text">
                             {{-- <span>FRUIT FRESH</span>
@@ -179,8 +179,12 @@ $total=$total+$p;
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
-                        <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <div class="header__logo">
+                            <a href="./index.html"><h1 style="
+                                font-size: 50px;
+                                font-weight: 600;
+                                color: #6e9731;
+                            ">Our Dairy</h1></a>
                         </div>
                         <ul>
                             <li>Address: Sargodha</li>

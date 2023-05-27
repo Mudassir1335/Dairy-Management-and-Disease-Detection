@@ -99,15 +99,7 @@ class websiteController extends Controller
     return redirect()->back()->with(Session::flash('message', 'Your order is successfuly placed. Thanks For Shoping.')); 
    
     }
-    public function search(Request $request)
-    {
-        $searchTerm = $request->input('search');
-        
-        // Perform the search query
-        $products = Product::where('product_name', 'like', "%$searchTerm%")->get();
-        
-        return view('mainweb', compact('products'));
-    }
+   
     
     
     }

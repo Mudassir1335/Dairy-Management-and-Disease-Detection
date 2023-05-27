@@ -291,6 +291,19 @@
       </div>
     </nav>
     <!-- End Navbar -->
+
+@php
+$totalSum = 0;
+@endphp
+<!-- sum of total -->
+@foreach($records as $record)
+@php
+$totalSum += $record['total'];
+@endphp
+
+@endforeach
+
+ 
     <div class="text-center">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
   Add Milk Record
@@ -373,6 +386,7 @@
                    
                   
       <tbody>
+      
       <!--  Edit MODEL-->
  <div class="modal fade" id="exampleModalLongg{{$record['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -429,6 +443,12 @@
  
 </table>
 </div>
+<div style="text-align: center;">
+<button type="button" class="btn btn-primary">Total Milk</button>
+<button type="button" class="btn btn-dark">{{$totalSum}}</td>
+   
+</div>
+
 
 
   </main>
