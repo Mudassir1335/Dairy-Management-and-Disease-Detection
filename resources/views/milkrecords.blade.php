@@ -214,77 +214,7 @@
               </a>
             </li>
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-bell cursor-pointer"></i>
-              </a>
-              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold">New message</span> from Laur
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          13 minutes ago
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold">New album</span> by Travis Scott
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          1 day
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
-                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <title>credit-card</title>
-                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                              <g transform="translate(1716.000000, 291.000000)">
-                                <g transform="translate(453.000000, 454.000000)">
-                                  <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
-                                  <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
-                                </g>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          Payment successfully completed
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          2 days
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-              </ul>
+              
             </li>
           </ul>
         </div>
@@ -308,15 +238,38 @@ $totalSum += $record['total'];
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
   Add Milk Record
 </button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cowmilk">
+  Calculate Cow Milk
+</button>
+<button id="clearButton" class="btn btn-primary" style="display: none;">Clear Filters</button>
+<h3 id="totalSum"> </h3>
 </div>
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+             
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Milk Record</h6>
+                <div style="
+                float: right;
+                margin-right: 20px;
+            "> <label style="
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+" for="">To: </label>
+                <input type="date" id="fromDate">
+                <label style="
+                color: black;
+                font-size: 15px;
+                font-weight: bold;
+            " for="">From:</label>
+                <input type="date" id="toDate">
               </div>
+                <h6 class="text-white text-capitalize ps-3">Milk Record</h6>   
+              </div>
+             
             </div>
             <div class="card-body px-0 pb-2">
               <div class="table-responsive p-0" style="
@@ -446,6 +399,7 @@ $totalSum += $record['total'];
 <div style="text-align: center;">
 <button type="button" class="btn btn-primary">Total Milk</button>
 <button type="button" class="btn btn-dark">{{$totalSum}}</td>
+ 
    
 </div>
 
@@ -586,6 +540,59 @@ $totalSum += $record['total'];
   </div>
 </div>
 </div>
+
+{{-- Cow milk Calculator --}}
+
+
+<div class="modal fade" id="cowmilk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Calculate Cow Milk Production</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="px-4 py-3" action="" method="POST" enctype="multipart/form-data" id="cowmilk-form">
+          @csrf
+          <div class="form-group">
+            <label style="color: black;" for="ccode" >Cow Code</label>
+            <input type="text" name="ccode" id="milk" class="form-control brdr" id="exampleDropdownFormPassword1">
+          </div>
+          <ul id="cowlist1" style="
+    color: black;
+" class="dropdown-menu"></ul>
+          <div class="form-group">
+            <label style="color: black;">Date-From</label>
+            <input type="date" name="from" class="form-control brdr">
+          </div>
+          <div class="form-group">
+            <label style="color: black;">Date-To</label>
+            <input type="date" name="to" class="form-control brdr">
+          </div><br>
+          <div class="form-group">
+            {{-- <label style="color: black;" for="totalmilk">Total Milk</label>
+            <input type="text" name="totalmilk" class="form-control brdr" id="totalmilk"> --}}
+            <h2 style="
+            text-align: center;
+            color: red;
+           
+        " id="total-display"></h2>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Calculate</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{{-- /Cow milk calculatotr --}}
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -662,7 +669,115 @@ $totalSum += $record['total'];
    
   });
   </script>
+  <script>
+    $(document).ready(function(){
+     
+        $('#milk').keyup(function(){ 
+            var query = $(this).val(); 
+            if(query != '')
+            {
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url:"{{ route('autocomplete.fetch') }}",
+                    method:"POST",
+                    data:{query:query, _token:_token},
+                    success:function(data){
+                    $('#cowlist1').fadeIn();  
+                        $('#cowlist1').html(data);
+                    }
+                });
+            }
+        });
+     
+        $(document).on('click', 'li', function(){  
+            $('#milk').val($(this).text());  
+            $('#cowlist1').fadeOut();  
+        });  
+     
+    });
+    </script>
+<script>
+ $(document).ready(function() {
+        $('#cowmilk-form').on('submit', function(e) {
+            e.preventDefault();
 
+            // Get form data
+            var formData = $(this).serialize();
+
+            // Send an AJAX request to the server
+            $.ajax({
+                url: "{{ route('get-total-milk') }}",
+                type: "POST",
+                data: formData,
+                dataType: "json",
+                success: function(response) {
+                    if (response.total_milk !== undefined) {
+                        // Update the totalmilk input field
+                        $('#totalmilk').val(response.total_milk);
+
+                        // Display the total inside the <h3> element
+                          $('#total-display').text(response.total_milk + " KG");
+                    } else {
+                        // Display error message or perform any other actions
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Display error message or perform any other actions
+                }
+            });
+        });
+    });
+    </script>
+     <script>
+      $(document).ready(function() {
+        var originalData = $('#mytable tbody').html();
+    
+        // Handler function for filtering the table and calculating total
+        function filterTableByDate() {
+          var fromDate = $('#fromDate').val();
+          var toDate = $('#toDate').val();
+    
+          var totalSum = 0;
+    
+          if (!fromDate && !toDate) {
+            $('#mytable tbody').html(originalData);
+            $('#clearButton').hide();
+            $('#totalSum').hide();
+          } else {
+            var from = new Date(fromDate);
+            var to = new Date(toDate);
+    
+            $('#mytable tbody tr').hide();
+            $('#mytable tbody tr').each(function() {
+              var rowDate = new Date($(this).find('td:first').text());
+              var rowTotalMilk = parseInt($(this).find('td:nth-child(5)').text(), 10);
+    
+              if (rowDate >= from && rowDate <= to) {
+                $(this).show();
+                totalSum += rowTotalMilk;
+              }
+            });
+    
+            $('#clearButton').show();
+          }
+    
+          $('#totalSum').text('Total Milk: ' + totalSum+' KG');
+        }
+    
+        // Attach an event listener to the date inputs
+        $('#fromDate, #toDate').change(filterTableByDate);
+    
+        // Attach an event listener to the clear button
+        $('#clearButton').click(function() {
+          $('#fromDate').val('');
+          $('#toDate').val('');
+          filterTableByDate();
+          location.reload(); // Refresh the page
+        });
+      });
+    </script>
+    
+    
 </body>
 
 </html>

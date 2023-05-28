@@ -113,3 +113,8 @@ Route::get('deletemilkrecord/{id}',[MilkRecordController::class,'deletemilkrecor
 Route::post('editmilkrecord',[MilkRecordController::class,'updatemilkrecord']);
 Route::get('/check-milk-record', [MilkRecordController::class, 'checkMilkRecord'])->name('check.milk.record');
 Route::post('/autocomplete/fetch', [MilkRecordController::class, 'fetch'])->name('autocomplete.fetch');
+Route::post('/get-total-milk',[MilkRecordController::class,'getTotalMilk'])->name('get-total-milk');
+Route::post('/get-total-sum', [MilkRecordController::class, 'getTotalSum']);
+
+// Disease detection by Picture
+Route::view('detectpic','detectpic');

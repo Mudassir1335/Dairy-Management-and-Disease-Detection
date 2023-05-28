@@ -100,4 +100,34 @@ public function fetch(Request $request)
             return new Response($output);
         }
 }
+public function getTotalMilk(Request $request)
+    {
+        // Validate the form data
+        $validatedData = $request->validate([
+            'ccode' => 'required',
+            'from' => 'required|date',
+            'to' => 'required|date',
+        ]);
+
+        $ccode = $validatedData['ccode'];
+        $from = $validatedData['from'];
+        $to = $validatedData['to'];
+
+        // Retrieve the total milk production
+        $totalMilk =  milk_record::where('cow_code', $ccode)
+            ->whereBetween('date', [$from, $to])
+            ->sum('total');
+
+        // Return the total milk as a response
+        return response()->json(['total_milk' => $totalMilk]);
+    }
+    public function getTotalSum(Request $request)
+    {
+        $from = $request->input('fromm');
+        $to = $request->input('too');
+
+        $totalSum =milk_record::whereBetween('date', [$from, $to])->sum('total');
+
+        return response()->json($totalSum);
+    }
 }
