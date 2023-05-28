@@ -8,7 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MilkRecordController;
-
+use App\Http\Controllers\DiagnoseController;
 
 
 /*
@@ -95,7 +95,7 @@ Route::post('edit',[CategoryController::class,'updateproduct']);
 
 
 
-Auth::routes();
+ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => 'auth'], function () {
@@ -113,3 +113,7 @@ Route::get('deletemilkrecord/{id}',[MilkRecordController::class,'deletemilkrecor
 Route::post('editmilkrecord',[MilkRecordController::class,'updatemilkrecord']);
 Route::get('/check-milk-record', [MilkRecordController::class, 'checkMilkRecord'])->name('check.milk.record');
 Route::post('/autocomplete/fetch', [MilkRecordController::class, 'fetch'])->name('autocomplete.fetch');
+//  Detect disease
+
+Route::view('detection','detection');
+Route::post('/diagnose', [DiagnoseController::class, 'diagnose'])->name('diagnose');
