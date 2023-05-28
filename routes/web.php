@@ -7,8 +7,9 @@ use App\Http\Controllers\animalController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\expenseController;
 use App\Http\Controllers\MilkRecordController;
-use App\Http\Controllers\DiagnoseController;
+
 
 
 /*
@@ -43,6 +44,13 @@ Route::get('employees',[EmployeeController::class,'showEmployee']);
  Route::get('deleteEmployee/{id}',[EmployeeController::class,'deleteEmployee']);
  Route::post('editEmployee',[EmployeeController::class,'updateEmployee']);
 
+// Expense Management
+
+Route::view('expenses','expenses');
+Route::post('expense',[expenseController::class,'addExpense']);
+Route::get('expenses',[expenseController::class,'showExpense']);
+Route::get('deleteexpense/{id}',[expenseController::class,'deletexpense']);
+Route::post('editExpense/{id}',[expenseController::class,'updateExpense']);
 
 // Admin  panel
 Route::view('admins','admins');
@@ -117,3 +125,7 @@ Route::post('/autocomplete/fetch', [MilkRecordController::class, 'fetch'])->name
 
 Route::view('detection','detection');
 Route::post('/diagnose', [DiagnoseController::class, 'diagnose'])->name('diagnose');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

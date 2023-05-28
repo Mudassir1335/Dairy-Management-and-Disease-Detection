@@ -11,7 +11,7 @@ class AdminController extends Controller
     {
         $ad=new admin;
        
-        $file=$req->file('file');
+        $file=$req->file('adminpic');
         $extenstion= $file->getClientOriginalExtension();
         $filename=time().'.' .$extenstion;
         $file->move('uploads',$filename);

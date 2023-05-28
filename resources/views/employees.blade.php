@@ -322,11 +322,11 @@
                     </td>
                   
                     <td>
-                      <img src="uploads/{{$ad['admin_image']}}" style="
+                      <img src="uploads/{{$emp['employee_image']}}" style="
                       width: 50px;
                   " alt="" srcset="">
                     </td>
-                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg" class="btn btn-dark editbtn">Edit</button>
+                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg{{$emp['id']}}" class="btn btn-dark editbtn">Edit</button>
                     
                   </td>
                     <td>
@@ -335,7 +335,7 @@
                    
       <tbody>
         <!-- Edit MODEL -->
- <div class="modal fade" id="exampleModalLongg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+ <div class="modal fade" id="exampleModalLongg{{$emp['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -347,7 +347,7 @@
       <div class="modal-body">
       <form class="px-4 py-3" action="/editEmployee" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="hidden" value="{{$emp['id']}}" name="id"/> 
+        <input type="hidden" value="{{$emp['id']}}" name="id"/>  
       <div class="form-group">
       <label >First Name</label>
       <input type="text" name="fname" value="{{$emp['first_name']}}" class="form-control"  placeholder="First Name">
@@ -532,7 +532,7 @@
       <label style="
       color: black;
   " for="exampleDropdownFormdate">Upload PIcture</label>
-      <input type="file" class="form-control brdr"  name="emppic" id="exampleDropdownFormimg" >
+      <input type="file" class="form-control brdr"  name="employeepic" id="exampleDropdownFormimg" >
     </div>
 
 

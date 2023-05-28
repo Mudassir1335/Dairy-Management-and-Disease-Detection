@@ -10,7 +10,7 @@ class EmployeeController extends Controller
       {
         $employee=new employee;
        
-        $file=$req->file('file');
+        $file=$req->file('employeepic');
         $extenstion= $file->getClientOriginalExtension();
         $filename=time().'.' .$extenstion;
         $file->move('uploads',$filename);
@@ -54,7 +54,7 @@ class EmployeeController extends Controller
         $file=$req->file('file');
         $extenstion= $file->getClientOriginalExtension();
        $filename=time().'.' .$extenstion;
-        $file->move('uploads',$filename);
+       $file->move('uploads',$filename);
         
         $employee->employee_image=$filename;
          }
