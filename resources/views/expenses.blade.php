@@ -51,7 +51,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('products')}}">
+          <a class="nav-link text-white active bg-gradient-primary " href="{{url('products')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -59,7 +59,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('animals')}}">
+          <a class="nav-link text-white " href="../pages/billing.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
@@ -67,15 +67,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('category')}}">
+          <a class="nav-link text-white " href="../pages/virtual-reality.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">view_in_ar</i>
             </div>
-            <span class="nav-link-text ms-1">Category</span>
+            <span class="nav-link-text ms-1">Report</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('milkrecords')}}">
+          <a class="nav-link text-white " href="../pages/rtl.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
             </div>
@@ -83,7 +83,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('showsale')}}">
+          <a class="nav-link text-white " href="../pages/notifications.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>
             </div>
@@ -94,20 +94,11 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('employees')}}">
+          <a class="nav-link text-white " href="../pages/profile.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person</i>
             </div>
             <span class="nav-link-text ms-1">Manage Employess</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary " href="{{url('admins')}}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">person</i>
-            </div>
-            <span class="nav-link-text ms-1">Manage Admins</span>
           </a>
         </li>
         <li class="nav-item">
@@ -154,14 +145,11 @@
               <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank" >Detect disease</a>
             </li>
             <li class="nav-item d-flex align-items-center">
-              <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link text-body font-weight-bold px-0">
-                  <i class="fa fa-user me-sm-1"></i>
-                  <span class="d-sm-inline d-none">Logout</span>
+              <a href="../pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none">Sign In</span>
               </a>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
-              </form>
-          </li>
+            </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
@@ -256,8 +244,29 @@
     <!-- End Navbar -->
     <div class="text-center">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Add Admin
+  Add Expense
 </button>
+ @php
+    $total=0; 
+    
+     @endphp 
+     @foreach($expenses as $exp)
+    @php 
+$price = $exp['expense_amount'];
+
+$total+=$price;
+
+ @endphp
+    @endforeach
+
+    
+
+</div>
+<div class="text-right">
+  
+    <!-- <input type="text" value="{{$total}}" name="totalexpense" class="form_control"  data-target="#exampleModalLong"> -->
+  <h6>Total Expense:  {{$total}}  </h6>
+
 </div>
     <div class="container-fluid py-4">
       <div class="row">
@@ -265,7 +274,7 @@
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Admin table</h6>
+                <h6 class="text-white text-capitalize ps-3">Expense table</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -273,14 +282,12 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">First Name</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Last Name </th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">CNIC</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
-<!--                        
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> password</th> -->
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Expense Details</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Expense Amount</th>
+                       
+                  
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">EDIT</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
                     
                     
@@ -288,93 +295,68 @@
                     </tr>
                   </thead>
                   <tbody>
-
-                  @foreach($admins as $ad)
                   
-                  
-
+                  @foreach($expenses as $exp)
                    <tr>
-                    
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        {{-- <div>
-                          <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-                        </div> --}}
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">{{$ad['first_name']}}</h6>
-                          
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">{{$ad['last_name']}}</p>
-                     
-                    </td>
+                   
+                   
                     
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$ad['cnic']}}</span>
+                      <span class="text-secondary text-xs font-weight-bold" >{{$exp['date']}}</span>
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$ad['email']}}</span>
+                      <span class="text-secondary text-xs font-weight-bold">{{$exp['expense_details']}}</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">{{$exp['expense_amount']}}</span>
                     </td>
                    
-                    <!-- <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$ad['password']}}</span>
-                    </td> -->
-                    <td>
-                      <img src="uploads/{{$ad['admin_image']}}" style="
-                      width: 50px;
-                  " alt="" srcset="">
-                    </td>
-                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg{{$ad['id']}}" class="btn btn-dark editbtn">Edit</button>
+                   
+                  
+                   
+                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg{{$exp['id']}}" class="btn btn-dark editbtn">Edit</button>
                     
                   </td>
                     <td>
-                      <a type="button"  href={{"deleteadmin/" .$ad['id']}} class="btn btn-dark"  OnClick="return confirm('Are You Sure You want to Delete admin')" >Delete</a></td>
+                      <a type="button" href={{"deleteexpense/" .$exp['id']}}    class="btn btn-dark"  OnClick="return confirm('Are You Sure You want to Delete Expense')" >Delete</a></td>
                   </tr> 
                    
       <tbody>
         <!-- Edit MODEL -->
- <div class="modal fade" id="exampleModalLongg{{$ad['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+ <div class="modal fade" id="exampleModalLongg{{$exp['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Edit admin</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Edit Expense</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <form class="px-4 py-3" action="/editAdmin" method="POST" enctype="multipart/form-data">
+      <form class="px-4 py-3"action="{{ url('editExpense/'.$exp->id) }}"  method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="hidden" value="{{$ad['id']}}" name="id"/> 
-      <div class="form-group">
-      <label >First Name</label>
-      <input type="text" name="fname" value="{{$ad['first_name']}}" class="form-control"  placeholder="First Name">
+        <div class="form-group">
+      <label style="
+      color: black;
+  ">Date</label>
+      <input  type="date" name="date" value="{{$exp['date']}}"  class="form-control brdr"  >
+    </div>
+    
+    <div class="form-group">
+      
+      <label style="
+      color: black;
+  " for="exampleDropdownFormq">Expene Details</label>
+      <input type="text" name="expensedetail" value="{{$exp['expense_details']}}"   class="form-control brdr" id="exampleDropdownFormq" >
     </div>
     <div class="form-group">
       
-      <label for="exampleDropdownFormPassword1">Last Name</label>
-      <input type=""  name="lname" value="{{$ad['last_name']}}" class="form-control" id="exampleDropdownFormPassword1" placeholder="last name">
+      <label style="
+      color: black;
+  " for="exampleDropdownFormC">Expense Amount</label>
+      <input type="text" name="expenseamount" value="{{$exp['expense_amount']}}"  class="form-control brdr" id="exampleDropdownFormC" >
     </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormq">CNIC</label>
-      <input type="" name="cnic" value="{{$ad['cnic']}}" class="form-control" id="exampleDropdownFormq" placeholder="CNIC">
-    </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormC">EMAIL</label>
-      <input type="email" name="email" value="{{$ad['email']}}" class="form-control" id="exampleDropdownFormC" placeholder="email">
-    </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormdate">Password</label>
-      <input type="password" name="password" value="{{$ad['password']}}" class="form-control" id="exampleDropdownFormdate" placeholder="password">
-    </div>
-    <div class="form-group">
-      <input type="file" class="form-control"   name="adminpic" id="exampleDropdownFormimg" >
-    </div>
+    
 
 
       <div class="modal-footer">
@@ -389,8 +371,8 @@
  
 <!-- end edit model -->
 
+@endforeach;
  
-      @endforeach; 
 </table>
 </div>
   </main>
@@ -461,7 +443,7 @@
 
 
   
-		
+   
 		
 		
 <!-- Modal -->
@@ -469,60 +451,37 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add Admin</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Expense</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <form class="px-4 py-3" action="admin" method="post" enctype="multipart/form-data">
+      <form class="px-4 py-3" action="expense" method="POST"  enctype="multipart/form-data">
         @csrf
-      <div class="form-group"> 
+      <div class="form-group">
       <label style="
       color: black;
-  ">First Name</label>
-      <input type="text" value="{{old('fname')}}" SetFocusOnError="true" placeholder="Muhammad" name="fname" class="form-control brdr"  >
-      <!-- <span class="text-danger">@error('fname'){{$message}} @enderror</apan> -->
+  ">Date</label>
+      <input type="date" name="date" value="{{old('date')}}"  class="form-control brdr"  >
+    </div>
+    
+    <div class="form-group">
+      
+      <label style="
+      color: black;
+  " for="exampleDropdownFormq">Expene Details</label>
+      <input type="" name="expensedetail" value="{{old('expensedetail')}}"   class="form-control brdr" id="exampleDropdownFormq" >
     </div>
     <div class="form-group">
       
       <label style="
       color: black;
-  " for="exampleDropdownFormPassword1">Last Name</label>
-      <input type=""  name="lname" value="{{old('lname')}}" placeholder="bilal" class="form-control brdr" id="exampleDropdownFormPassword1" >
-      <!-- <span class="text-danger">@error('lname'){{$message}} @enderror</apan> -->
+  " for="exampleDropdownFormC">Expense Amount</label>
+      <input type="text" name="expenseamount" value="{{old('expenseamount')}}"  class="form-control brdr" id="exampleDropdownFormC" >
     </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormq">CNIC</label>
-      <input type="text" name="cnic" value="{{old('cnic')}}" pattern="[0-9]{5}[0-9]{7}[0-9]{1}" placeholder="33333-2222222-1"  class="form-control brdr" id="exampleDropdownFormq" >
-     <span class="text-danger" SetFocusOnError="true">@error('cnic'){{$message}} @enderror</apan> 
-    </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormC">Email</label>
-      <input type="email" value="{{old('email')}}" placeholder="abc@mail.com" name="email"  class="form-control brdr" id="exampleDropdownFormC" >
-       <span class="text-danger" SetFocusOnError="true">@error('email'){{$message}} @enderror</apan> 
-    </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormdate">Password</label>
-      <input type="password" value="{{old('password')}}" placeholder="password" name="password"  class="form-control brdr" id="exampleDropdownFormdate" >
-      <!-- <span class="text-danger">@error('password'){{$message}} @enderror</apan> -->
-    </div>
-    <div class="form-group">
-      <label style="
-      color: black;
-  " for="exampleDropdownFormdate">Upload PIcture</label>
-      <input type="file" class="form-control brdr" value="{{old('file')}}"  name="file" id="exampleDropdownFormimg" >
-      <!-- <span class="text-danger">@error('file'){{$message}} @enderror</apan> -->
-    </div>
+    
+    
 
 
       <div class="modal-footer">
