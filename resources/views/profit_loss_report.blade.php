@@ -280,13 +280,15 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
+                   
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total_Revenue</th>
                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total_Expenses</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date</th>
+                 
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">gross_profit</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">other_income</th>
-                       
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">other_expenses </th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">net_profit/Loss</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total Milk</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total_income</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">net_profit/Loss</th>
                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
                     </tr>
                   </thead>
@@ -296,9 +298,11 @@
                    <tr>
                     
                     <td>
+                   
                       <div class="d-flex px-2 py-1">
                        
                         <div class="d-flex flex-column justify-content-center">
+                          
                           <h6 class="mb-0 text-sm">{{ $totalRevenue }}</h6>
                         </div>
                       </div>
@@ -307,20 +311,22 @@
                       <p class="text-xs font-weight-bold mb-0">{{ $totalExpenses }}</p>
                      
                     </td>
-                    
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">{{  $currentDate }}</span>
+                    </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">{{ $grossProfit }}</span>
                     </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{ $otherIncome }}</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{ $otherExpenses }}</span>
-                    </td>
+                   
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">{{ $netProfit }}</span>
                     </td>
-
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">{{ $totalMilk }}</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">{{ $totalMilkIncome }}</span>
+                    </td>
                     <td>
                       <a type="button"  class="btn btn-dark"  OnClick="return confirm('Are You Sure You want to Delete ')" >Delete</a></td>
                   </tr> 

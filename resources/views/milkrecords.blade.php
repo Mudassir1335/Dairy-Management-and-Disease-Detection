@@ -285,6 +285,9 @@ $totalSum += $record['total'];
                        
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total Milk</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Reason</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Today Rate </th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total price</th>
+                    
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
                     
@@ -328,6 +331,16 @@ $totalSum += $record['total'];
                     <span class="text-secondary text-xs font-weight-bold">{{$record['reason']}}</span>
                    
                      </td>
+                     <td>
+                    <span class="text-secondary text-xs font-weight-bold">{{$record['today_rate']}}</span>
+                   
+                     </td>
+                     <td>
+                    <span class="text-secondary text-xs font-weight-bold">{{$record['total_price']}}</span>
+                   
+                     </td>
+                    
+                    
                     <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg{{$record['id']}}" class="btn btn-dark editbtn">Edit</button>
                     
                   </td>
@@ -380,7 +393,13 @@ $totalSum += $record['total'];
       <input type="text" name="reason" value="{{$record['reason']}}" class="form-control" id="exampleDropdownFormdate" placeholder="reason">
     </div>
 
-
+    <div class="form-group">
+      
+      <label for="exampleDropdownFormdate">Today Rate</label>
+      <input type="text" name="reason" value="{{$record['today_rate']}}" class="form-control" id="exampleDropdownFormdate" placeholder="reason">
+    </div>
+ 
+    
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
@@ -400,10 +419,14 @@ $totalSum += $record['total'];
 <button type="button" class="btn btn-primary">Total Milk</button>
 <button type="button" class="btn btn-dark">{{$totalSum}}</td>
  
-   
+
+ 
 </div>
 
-
+<div>
+<button type="button" class="btn btn-primary">Total Price</button>
+<button type="button" class="btn btn-dark">{{$totalPrice}}</td>
+</div>
 
   </main>
   <div class="fixed-plugin">
@@ -529,7 +552,14 @@ $totalSum += $record['total'];
       <input type="text" name="reason"  class="form-control brdr" id="exampleDropdownFormdate" >
     </div>
     
-
+    <div class="form-group">
+      
+      <label style="
+      color: black;
+  " for="exampleDropdownFormdate">Today Rate</label>
+      <input type="text" name="rate"  class="form-control brdr" id="exampleDropdownFormdate" >
+    </div>
+   
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

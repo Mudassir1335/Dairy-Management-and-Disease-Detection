@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('profit_loss', function (Blueprint $table) {
             $table->increments('id');
+            $table->date('date')->default(now())->nullable();
+            $table->decimal('total_milk', 10, 2);
+            $table->decimal('total_milk_income', 10, 2);
             $table->decimal('total_revenue', 10, 2);
             $table->decimal('total_expenses', 10, 2);
             $table->decimal('gross_profit', 10, 2);
