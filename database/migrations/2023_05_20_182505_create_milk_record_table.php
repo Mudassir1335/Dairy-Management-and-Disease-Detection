@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('evening')->nullable();
             $table->string('total')->nullable();
             $table->string('reason')->nullable();
+            $table->float('today_rate')->nullable();
+            $table->float('total_price')->nullable();
             $table->timestamps();
         });
     }

@@ -13,9 +13,10 @@ class MilkRecordController extends Controller
     public function showmilkrecord()
     {
         $data= milk_record::all();
-        return view('milkrecords',['records'=>$data]);
-
+        $totalPrice = milk_record::sum('total_price');
+        return view('milkrecords', ['records' => $data, 'totalPrice' => $totalPrice]);
     }
+    
      
     public function addmilkrecord(Request $req)
     {
@@ -26,7 +27,9 @@ class MilkRecordController extends Controller
         $data->evening=$req->evening;
         $data->total=$data->morning+$data->evening;
         $data->reason=$req->reason;
-        
+        $data->today_rate=$req->rate;
+        $data->total_price = $data->today_rate * $data->total; // Calculate total price
+    
         $data->save();
         return redirect('milkrecords');
 
@@ -50,8 +53,9 @@ class MilkRecordController extends Controller
        $data->evening=$req->evening;
        $data->total=$data->morning+$data->evening;
        $data->reason=$req->reason;
-       
-       
+       $data->today_rate=$req->rate;
+       $data->total_price = $data->today_rate * $data->total; // Calculate total price
+    
        $data->update();
        return redirect('milkrecords');
 

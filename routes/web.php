@@ -10,7 +10,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\expenseController;
 use App\Http\Controllers\MilkRecordController;
 use App\Http\Controllers\DiagnoseController;
-
+use App\Http\Controllers\ProfitLossController;
 
 
 /*
@@ -136,5 +136,11 @@ Route::post('/diagnose', [DiagnoseController::class, 'diagnose'])->name('diagnos
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//  Profit AND  Losss
+
 
 Route::view('detection1','detection1');
+
+Route::get('/report', [ProfitLossController::class, 'generateReport']);
+Route::get('delete/{id}',[ProfitLossController::class,'deletereport']);
+
