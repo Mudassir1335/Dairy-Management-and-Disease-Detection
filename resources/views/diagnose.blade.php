@@ -1,5 +1,7 @@
 <body style="background-color: black; display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <div>
+    <div style="
+    font-size: 30px;
+">
         <h2 style="color: white; text-align: center;">Diagnosis Result</h2>
 
         @if($diseases->isEmpty())

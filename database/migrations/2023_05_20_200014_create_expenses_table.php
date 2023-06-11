@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('date');
             $table->string('expense_details');
             $table->string('expense_amount');
-            $table->string('total_expenses');
+            
             $table->timestamps();
         });
     }

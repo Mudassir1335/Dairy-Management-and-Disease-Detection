@@ -13,7 +13,7 @@ class expenseController extends Controller
           $exp->date=$req->date;
           $exp->expense_details=$req->expensedetail;
           $exp->expense_amount=$req->expenseamount;
-          $exp->total_expenses=$req->totalexpense;
+          
           $exp->save();
           return redirect('expenses');
     }
@@ -38,7 +38,7 @@ class expenseController extends Controller
        $exp->date=$req->date;
        $exp->expense_details=$req->expensedetail;
        $exp->expense_amount=$req->expenseamount;
-       $exp->total_expenses=$req->totalexpense;
+      
        
        $exp->update();
        return redirect('expenses');
