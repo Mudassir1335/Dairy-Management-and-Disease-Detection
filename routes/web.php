@@ -11,7 +11,7 @@ use App\Http\Controllers\expenseController;
 use App\Http\Controllers\MilkRecordController;
 use App\Http\Controllers\DiagnoseController;
 use App\Http\Controllers\ProfitLossController;
-
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +74,7 @@ Route::get('deletesale/{id}',[websiteController::class,'deletesales']);
 Route::view('cart', 'cart');
 Route::view('checkout', 'checkout');
 Route::view('dashboard', 'dashboard');
+Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
 Route::get('mainweb',[websiteController::class,'ShowProductWeb']);
 Route::post('addcart',[websiteController::class,'AddToCart']);
 Route::get('emptycart',[websiteController::class,'emptyCart']);
