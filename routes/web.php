@@ -113,16 +113,4 @@ Route::group(['middleware' => 'auth'], function () {
     // Add more authenticated routes here
 });
 
-
-// Manage Milk Record
-Route::view('milkrecords','milkrecords');
-Route::get('milkrecords',[MilkRecordController::class,'showmilkrecord']);
-Route::post('milkrecords',[MilkRecordController::class,'addmilkrecord']);
-Route::get('deletemilkrecord/{id}',[MilkRecordController::class,'deletemilkrecord']);
-Route::post('editmilkrecord',[MilkRecordController::class,'updatemilkrecord']);
-Route::get('/check-milk-record', [MilkRecordController::class, 'checkMilkRecord'])->name('check.milk.record');
-Route::post('/autocomplete/fetch', [MilkRecordController::class, 'fetch'])->name('autocomplete.fetch');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+require __DIR__.'/auth.php';
