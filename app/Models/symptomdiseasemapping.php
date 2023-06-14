@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class managesale extends Model
+class symptomdiseasemapping extends Model
 {
     use HasFactory;
-    protected $table = 'manage_sale';
+    protected $table = 'symptom_disease_mappings';
 }

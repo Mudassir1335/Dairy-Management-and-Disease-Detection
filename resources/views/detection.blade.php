@@ -22,12 +22,21 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.4" rel="stylesheet" />
 <style>
+  img {
+  border-radius: 60%;
+}
   .brdr{
     
     border: solid 1px;
     margin-left: 5px;
 
   }
+  .brdr:active {
+    border: solid black 1px;
+}
+  .brdr:link {
+    border: solid black 1px;
+}
 </style>
 </head>
 
@@ -68,7 +77,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('category')}}">
+          <a class="nav-link text-white" href="{{url('category')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">view_in_ar</i>
             </div>
@@ -84,7 +93,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="{{url('showsale')}}">
+          <a class="nav-link text-white " href="{{url('showsale')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>
             </div>
@@ -169,7 +178,7 @@
               </a>
             </li>
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              
+             
             </li>
           </ul>
         </div>
@@ -177,162 +186,77 @@
     </nav>
     <!-- End Navbar -->
     <div class="text-center">
-   
-</div>
-    <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-12">
-          <div class="card my-4">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Sales Table</h6>
-              </div>
-            </div>
-            <div class="card-body px-0 pb-2">
-              <div class="table-responsive p-0" style="
-              overflow-y: hidden;
-          ">
-                <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">First Name</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Last Name</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">City</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Phone</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product Name</th>
-                       
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantity</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total</th>
-                      
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Order Date</th>
-                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
-                    
-                    
-                      <th class="text-secondary opacity-7"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
+    
+  <style>
+    .button {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      margin-right: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      transition: background-color 0.3s ease;
+    }
 
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
 
-                  @foreach($products as $product)
-                  
-
-                   <tr>
-                    
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        {{-- <div>
-                          <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-                        </div> --}}
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">{{$product['first_name']}}</h6>
-                          
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">{{$product['last_name']}}</p>
-                     
-                    </td>
-                    
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$product['city']}}</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$product['address']}}</span>
-                    </td>
-                   
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$product['phone']}}</span>
-                    </td>
-                    <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['email']}}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['product_name']}}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['price']}}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['quantity']}}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['total']}}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['created_at']}}</span>
-                      </td>
-                    
-                    <td>
-                      <a type="button"  class="btn btn-dark" href={{"deletesale/" .$product['id']}} OnClick="return confirm('Are You Sure You want to Delete Sales')" >Delete</a></td>
-                  </tr> 
-                   
-      <tbody>
-        <!-- Edit MODEL -->
- <div class="modal fade" id="exampleModalLongg{{$product['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Edit Product</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <!-- <button class="button">Button 1</button>
+  <button class="button">Button 2</button> -->
+  <div class="tm-container-fluid" style="margin-top: 150px;">
+		<section class="tm-site-header tm-flex-center tm-mb-50 tm-bgcolor-1 tm-border-rounded">
+			
+			<h1 > Disease Detection</h1><br>
+		</section>
+    <style>
+    .custom-div {
+      min-height: 200px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="custom-div" style="background-color: grey; padding: 10px; border-radius: 15px;">
+        <h4 style="
+        font-size: 35px;
+    ">Detection by Symptoms</h4>
+        <p>A system that identifies diseases based on presented symptoms, aiding in accurate diagnosis and treatment.</p>
+        <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">By Symptoms</button>
       </div>
-      <div class="modal-body">
-      <form class="px-4 py-3" action="/edit" method="POST" enctype="multipart/form-data">
-        @csrf
-        <input type="hidden" value="{{$product['id']}}" name="id"/> 
-      <div class="form-group">
-      <label >Product Name</label>
-      <input type="text" name="pname" value="{{$product['product_name']}}" class="form-control"  placeholder="Product Name">
     </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormPassword1">Price</label>
-      <input type=""  name="pprice" value="{{$product['price']}}" class="form-control" id="exampleDropdownFormPassword1" placeholder="Price">
-    </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormq">Quantity</label>
-      <input type="" name="quantity" value="{{$product['quantity']}}" class="form-control" id="exampleDropdownFormq" placeholder="Quantity">
-    </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormC">Category</label>
-      <input type="text" name="category" value="{{$product['category']}}" class="form-control" id="exampleDropdownFormC" placeholder="Category">
-    </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormdate">Expirey Date</label>
-      <input type="text" name="date" value="{{$product['expirey_date']}}" class="form-control" id="exampleDropdownFormdate" placeholder="Expirey Date">
-    </div>
-    <div class="form-group">
-      <input type="file" class="form-control"  name="file" id="exampleDropdownFormimg" >
-    </div>
-
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
-  </div>
- 
-<!-- end edit model -->
-
- 
-      @endforeach  
+    <div class="col-sm">
+      <div class="custom-div" style="background-color: grey; padding: 10px; border-radius: 15px;">
+        <h4 style="
+        font-size: 35px;
+    ">Detection by Image</h4>
+        <p>An image-based system that utilizes advanced algorithms to analyze images and identify objects and classification for various applications.</p>
         
-</table>
+        <a href="{{url('detectpic')}}" class="btn btn-primary">By Image</a>
+      </div>
+    </div>
+  </div>
 </div>
-  </main>
+
+
+
+		<section class="tm-about tm-mb-80 tm-p-50 tm-bgcolor-2 tm-border-rounded">
+			<div class="tm-about-header tm-flex-center">
+				
+			</div>
+		</section>
+
+</div>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
       <i class="material-icons py-2">settings</i>
@@ -396,77 +320,6 @@
       </div>
     </div>
   </div>
-
-
-
-  
-		
-		
-		
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <form class="px-4 py-3" action="product" method="POST" enctype="multipart/form-data">
-        @csrf
-      <div class="form-group">
-      <label style="
-      color: black;
-  ">Product Name</label>
-      <input type="text" name="pname" class="form-control brdr"  >
-    </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormPassword1">Price</label>
-      <input type=""  name="pprice" class="form-control brdr" id="exampleDropdownFormPassword1" >
-    </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormq">Quantity</label>
-      <input type="" name="quantity"  class="form-control brdr" id="exampleDropdownFormq" >
-    </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormC">Category</label>
-      <input type="text" name="category"  class="form-control brdr" id="exampleDropdownFormC" >
-    </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormdate">Expirey Date</label>
-      <input type="date" name="date"  class="form-control brdr" id="exampleDropdownFormdate" >
-    </div>
-    <div class="form-group">
-      <label style="
-      color: black;
-  " for="exampleDropdownFormdate">Upload Image</label>
-      <input type="file" class="form-control brdr"  name="file" id="exampleDropdownFormimg" >
-    </div>
-
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
-</div>
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -496,5 +349,57 @@
   <script src="../assets/js/material-dashboard.min.js?v=3.0.4"></script>
   </div>
 </body>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Disease Diagnoses</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <h2>Symptom Questionaire</h2>
+
+<form method="post" action="{{ url('/diagnose') }}">
+  @csrf
+
+  
+  <label>Select a symptom:</label><br>
+  <input type="checkbox" name="symptoms[]" value="Swelling"> Swelling<br>
+  <input type="checkbox" name="symptoms[]" value="Redness">Redness<br>
+  <input type="checkbox" name="symptoms[]" value="Heat"> Heat<br>
+  <input type="checkbox" name="symptoms[]" value="Pain"> Pain<br>
+  <input type="checkbox" name="symptoms[]" value="Coughing"> Coughing<br>
+  <input type="checkbox" name="symptoms[]" value="Nasal discharge"> Nasal discharge<br>
+  <input type="checkbox" name="symptoms[]" value="Rapid breathing"> Rapid breathing<br>
+  <input type="checkbox" name="symptoms[]" value="Reduced appetite"> Reduced appetite<br>
+  <input type="checkbox" name="symptoms[]" value="Distension"> Distension<br>
+  <input type="checkbox" name="symptoms[]" value="Salivation">Salivation<br>
+  <input type="checkbox" name="symptoms[]" value="Discomfort"> Discomfort<br>
+  <input type="checkbox" name="symptoms[]" value="Abnormal posture"> Abnormal posture<br>
+  <input type="checkbox" name="symptoms[]" value="Lameness"> Lameness<br>
+  <input type="checkbox" name="symptoms[]" value="Foul odor"> Foul odor<br>
+  <input type="checkbox" name="symptoms[]" value="Swelling"> Swelling<br>
+  <input type="checkbox" name="symptoms[]" value="Separation of hoof wall"> Separation of hoof wall<br>
+  <input type="checkbox" name="symptoms[]" value="Others"> Others<br>
+
+
+  <button type="submit" class="btn btn-primary">Check</button>
+</form>
+<div class="spinner-grow text-primary" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Model -->
 
 </html>

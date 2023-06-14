@@ -8,7 +8,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-   Dashboard Dairy Managment System
+  Dashboard Dairy Managment System
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -21,14 +21,6 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.4" rel="stylesheet" />
-<style>
-  .brdr{
-    
-    border: solid 1px;
-    margin-left: 5px;
-
-  }
-</style>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -84,7 +76,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="{{url('showsale')}}">
+          <a class="nav-link text-white " href="{{url('showsale')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>
             </div>
@@ -118,7 +110,7 @@
             <span class="nav-link-text ms-1">Manage Admins</span>
           </a>
         </li>
-        
+       
       </ul>
     </div>
     
@@ -130,9 +122,9 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Tables</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Tables</h6>
+          <h6 class="font-weight-bolder mb-0">Dashboard</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -143,17 +135,14 @@
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank" >Detect disease</a>
+              <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank" >Detect Disease</a>
             </li>
             <li class="nav-item d-flex align-items-center">
-              <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link text-body font-weight-bold px-0">
-                  <i class="fa fa-user me-sm-1"></i>
-                  <span class="d-sm-inline d-none">Logout</span>
+              <a href="../pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none">Sign In</span>
               </a>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
-              </form>
-          </li>
+            </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
@@ -169,169 +158,91 @@
               </a>
             </li>
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              
+             
             </li>
           </ul>
         </div>
       </div>
     </nav>
     <!-- End Navbar -->
-    <div class="text-center">
    
-</div>
-    <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-12">
-          <div class="card my-4">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Sales Table</h6>
-              </div>
-            </div>
-            <div class="card-body px-0 pb-2">
-              <div class="table-responsive p-0" style="
-              overflow-y: hidden;
-          ">
-                <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">First Name</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Last Name</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">City</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Phone</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product Name</th>
-                       
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantity</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total</th>
-                      
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Order Date</th>
-                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
-                    
-                    
-                      <th class="text-secondary opacity-7"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
+      <div >
+        <img id="imagePreview" style="height: 300px;" />
+    </div><br><br>
+        <div class="text-center">
+           
+        <input id="imageUpload" class="btn btn-primary" type="file" />
+        </div>
 
-
-                  @foreach($products as $product)
-                  
-
-                   <tr>
-                    
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        {{-- <div>
-                          <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-                        </div> --}}
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">{{$product['first_name']}}</h6>
-                          
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">{{$product['last_name']}}</p>
-                     
-                    </td>
-                    
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$product['city']}}</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$product['address']}}</span>
-                    </td>
-                   
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$product['phone']}}</span>
-                    </td>
-                    <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['email']}}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['product_name']}}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['price']}}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['quantity']}}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['total']}}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{$product['created_at']}}</span>
-                      </td>
-                    
-                    <td>
-                      <a type="button"  class="btn btn-dark" href={{"deletesale/" .$product['id']}} OnClick="return confirm('Are You Sure You want to Delete Sales')" >Delete</a></td>
-                  </tr> 
-                   
-      <tbody>
-        <!-- Edit MODEL -->
- <div class="modal fade" id="exampleModalLongg{{$product['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Edit Product</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <form class="px-4 py-3" action="/edit" method="POST" enctype="multipart/form-data">
-        @csrf
-        <input type="hidden" value="{{$product['id']}}" name="id"/> 
-      <div class="form-group">
-      <label >Product Name</label>
-      <input type="text" name="pname" value="{{$product['product_name']}}" class="form-control"  placeholder="Product Name">
-    </div>
-    <div class="form-group">
+      </div><br><br>
       
-      <label for="exampleDropdownFormPassword1">Price</label>
-      <input type=""  name="pprice" value="{{$product['price']}}" class="form-control" id="exampleDropdownFormPassword1" placeholder="Price">
-    </div>
-    <div class="form-group">
       
-      <label for="exampleDropdownFormq">Quantity</label>
-      <input type="" name="quantity" value="{{$product['quantity']}}" class="form-control" id="exampleDropdownFormq" placeholder="Quantity">
-    </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormC">Category</label>
-      <input type="text" name="category" value="{{$product['category']}}" class="form-control" id="exampleDropdownFormC" placeholder="Category">
-    </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormdate">Expirey Date</label>
-      <input type="text" name="date" value="{{$product['expirey_date']}}" class="form-control" id="exampleDropdownFormdate" placeholder="Expirey Date">
-    </div>
-    <div class="form-group">
-      <input type="file" class="form-control"  name="file" id="exampleDropdownFormimg" >
-    </div>
+   
+    <div id="label-container" style="
+    color: black;
+    font-size: 25px;
+    text-align: center;
+"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+  <script type="text/javascript">
+      // More API functions here:
+      // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
+      // the link to your model provided by Teachable Machine export panel
+      const URL = 'models/';
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
-  </div>
- 
-<!-- end edit model -->
+      let model, labelContainer, maxPredictions;
 
- 
-      @endforeach  
-        
-</table>
-</div>
+      // Load the image model 
+      async function init() {
+          const modelURL = URL + 'model.json';
+          const metadataURL = URL + 'metadata.json';
+
+          // load the model and metadata
+          model = await tmImage.load(modelURL, metadataURL);
+          maxPredictions = model.getTotalClasses();
+
+          labelContainer = document.getElementById('label-container');
+          for (let i = 0; i < maxPredictions; i++) {
+              // and class labels
+              labelContainer.appendChild(document.createElement('div'));
+          }
+      }
+
+      async function predict() {
+          // predict can take in an image, video or canvas html element
+          var image = document.getElementById('imagePreview');
+          const prediction = await model.predict(image, false);
+          for (let i = 0; i < maxPredictions; i++) {
+              const classPrediction =
+                  prediction[i].className + ': ' + prediction[i].probability.toFixed(2);
+              labelContainer.childNodes[i].innerHTML = classPrediction;
+          }
+      }
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript">
+      function readURL(input) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                  $('#imagePreview').attr('src', e.target.result);
+                  // $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                  $('#imagePreview').hide();
+                  $('#imagePreview').fadeIn(650);
+              };
+              reader.readAsDataURL(input.files[0]);
+              init().then(() => {
+                  predict();
+              });
+          }
+      }
+      $('#imageUpload').change(function () {
+          readURL(this);
+      });
+  </script>
   </main>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
@@ -396,88 +307,13 @@
       </div>
     </div>
   </div>
-
-
-
-  
-		
-		
-		
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <form class="px-4 py-3" action="product" method="POST" enctype="multipart/form-data">
-        @csrf
-      <div class="form-group">
-      <label style="
-      color: black;
-  ">Product Name</label>
-      <input type="text" name="pname" class="form-control brdr"  >
-    </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormPassword1">Price</label>
-      <input type=""  name="pprice" class="form-control brdr" id="exampleDropdownFormPassword1" >
-    </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormq">Quantity</label>
-      <input type="" name="quantity"  class="form-control brdr" id="exampleDropdownFormq" >
-    </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormC">Category</label>
-      <input type="text" name="category"  class="form-control brdr" id="exampleDropdownFormC" >
-    </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormdate">Expirey Date</label>
-      <input type="date" name="date"  class="form-control brdr" id="exampleDropdownFormdate" >
-    </div>
-    <div class="form-group">
-      <label style="
-      color: black;
-  " for="exampleDropdownFormdate">Upload Image</label>
-      <input type="file" class="form-control brdr"  name="file" id="exampleDropdownFormimg" >
-    </div>
-
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
-</div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-    
- 
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/chartjs.min.js"></script>
+  
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -486,15 +322,13 @@
       }
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
-
   </script>
-  
-  
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.min.js?v=3.0.4"></script>
-  </div>
+  
+  
 </body>
 
 </html>

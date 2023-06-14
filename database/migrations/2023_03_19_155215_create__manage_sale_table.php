@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Support\Facades\DB;
 return new class extends Migration
 {
     /**
@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('manage_sale', function (Blueprint $table) {
             $table->id();
+            $table->date('date')->nullable();
+            
             $table->string('first_name');
             $table->string('last_name');
             $table->string('city');
@@ -21,9 +23,9 @@ return new class extends Migration
             $table->string('email');
            
             $table->string('product_name');
-            $table->string('price');
-            $table->string('quantity');
-            $table->string('total');
+            $table->integer('price');
+            $table->integer('quantity');
+            $table->integer('total');
             $table->timestamps();
         });
     }

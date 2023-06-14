@@ -9,9 +9,9 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\expenseController;
 use App\Http\Controllers\MilkRecordController;
-
-
-
+use App\Http\Controllers\DiagnoseController;
+use App\Http\Controllers\ProfitLossController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +74,7 @@ Route::get('deletesale/{id}',[websiteController::class,'deletesales']);
 Route::view('cart', 'cart');
 Route::view('checkout', 'checkout');
 Route::view('dashboard', 'dashboard');
+Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
 Route::get('mainweb',[websiteController::class,'ShowProductWeb']);
 Route::post('addcart',[websiteController::class,'AddToCart']);
 Route::get('emptycart',[websiteController::class,'emptyCart']);
@@ -104,7 +105,7 @@ Route::post('edit',[CategoryController::class,'updateproduct']);
 
 
 
-Auth::routes();
+ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => 'auth'], function () {
@@ -113,4 +114,16 @@ Route::group(['middleware' => 'auth'], function () {
     // Add more authenticated routes here
 });
 
-require __DIR__.'/auth.php';
+
+// Manage Milk Record
+Route::view('milkrecords','milkrecords');
+Route::get('milkrecords',[MilkRecordController::class,'showmilkrecord']);
+Route::post('milkrecords',[MilkRecordController::class,'addmilkrecord']);
+Route::get('deletemilkrecord/{id}',[MilkRecordController::class,'deletemilkrecord']);
+Route::post('editmilkrecord',[MilkRecordController::class,'updatemilkrecord']);
+Route::get('/check-milk-record', [MilkRecordController::class, 'checkMilkRecord'])->name('check.milk.record');
+Route::post('/autocomplete/fetch', [MilkRecordController::class, 'fetch'])->name('autocomplete.fetch');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

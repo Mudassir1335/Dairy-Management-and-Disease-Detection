@@ -13,9 +13,10 @@ class MilkRecordController extends Controller
     public function showmilkrecord()
     {
         $data= milk_record::all();
-        return view('milkrecords',['records'=>$data]);
-
+        $totalPrice = milk_record::sum('total_price');
+        return view('milkrecords', ['records' => $data, 'totalPrice' => $totalPrice]);
     }
+    
      
     public function addmilkrecord(Request $req)
     {
@@ -26,7 +27,9 @@ class MilkRecordController extends Controller
         $data->evening=$req->evening;
         $data->total=$data->morning+$data->evening;
         $data->reason=$req->reason;
-        
+        $data->today_rate=$req->rate;
+        $data->total_price = $data->today_rate * $data->total; // Calculate total price
+    
         $data->save();
         return redirect('milkrecords');
 
@@ -50,8 +53,9 @@ class MilkRecordController extends Controller
        $data->evening=$req->evening;
        $data->total=$data->morning+$data->evening;
        $data->reason=$req->reason;
-       
-       
+       $data->today_rate=$req->rate;
+       $data->total_price = $data->today_rate * $data->total; // Calculate total price
+    
        $data->update();
        return redirect('milkrecords');
 
@@ -100,4 +104,34 @@ public function fetch(Request $request)
             return new Response($output);
         }
 }
+public function getTotalMilk(Request $request)
+    {
+        // Validate the form data
+        $validatedData = $request->validate([
+            'ccode' => 'required',
+            'from' => 'required|date',
+            'to' => 'required|date',
+        ]);
+
+        $ccode = $validatedData['ccode'];
+        $from = $validatedData['from'];
+        $to = $validatedData['to'];
+
+        // Retrieve the total milk production
+        $totalMilk =  milk_record::where('cow_code', $ccode)
+            ->whereBetween('date', [$from, $to])
+            ->sum('total');
+
+        // Return the total milk as a response
+        return response()->json(['total_milk' => $totalMilk]);
+    }
+    public function getTotalSum(Request $request)
+    {
+        $from = $request->input('fromm');
+        $to = $request->input('too');
+
+        $totalSum =milk_record::whereBetween('date', [$from, $to])->sum('total');
+
+        return response()->json($totalSum);
+    }
 }
