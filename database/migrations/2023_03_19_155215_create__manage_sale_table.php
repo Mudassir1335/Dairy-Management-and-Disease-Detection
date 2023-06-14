@@ -23,9 +23,9 @@ return new class extends Migration
             $table->string('email');
            
             $table->string('product_name');
-            $table->string('price');
-            $table->string('quantity');
-            $table->string('total');
+            $table->integer('price');
+            $table->integer('quantity');
+            $table->integer('total');
             $table->timestamps();
         });
     }

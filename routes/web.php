@@ -143,4 +143,6 @@ Route::view('detection1','detection1');
 
 Route::get('/report', [ProfitLossController::class, 'generateReport']);
 Route::get('delete/{id}',[ProfitLossController::class,'deletereport']);
+Route::get('/calculate-profit',[ProfitLossController::class,'calculateProfit']);
+
 

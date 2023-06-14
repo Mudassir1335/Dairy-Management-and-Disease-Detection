@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Managesale;
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 
 class websiteController extends Controller
@@ -84,6 +85,7 @@ class websiteController extends Controller
       $dataa->price=$details['price'];
       $dataa->quantity=$details['quantity'];
       $dataa->total=$details['price'] * $details['quantity'];
+      $dataa->date=Carbon::now()->format('Y.m.d');
     //   $data=[
     //     'subject'=>"",
     //     'body'=>"Thanks For Shoping. You will receive your Parcel within 3 to 4 Days. If You have any Query Contact us On 0348-6698915"

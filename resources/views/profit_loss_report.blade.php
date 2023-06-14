@@ -270,6 +270,26 @@
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+
+                <div style="
+                float: right;
+                margin-right: 20px;
+            "> <label style="
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+" for="">Month: </label>
+                <input type="date" id="start-date" >
+                <label style="
+                color: black;
+                font-size: 15px;
+                font-weight: bold;
+            " for="">Years: </label>
+               <input type="date" id="end-date" >
+              </div>
+              <button id="calculate-profit">Calculate Profit</button>
+
+              <div id="result"></div>
                 <h6 class="text-white text-capitalize ps-3">P&L Report</h6>
               </div>
             </div>
@@ -281,57 +301,57 @@
                   <thead>
                     <tr>
                    
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total_Revenue</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total_Expenses</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4">Date</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-0">Total Product Sale</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-0">Total Milk Sale</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-0">Total Liters</th>
                  
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">gross_profit</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total Milk</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total_income</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-0">Total Expense</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-0">Profit</th>
+                       {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total_income</th>
                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">net_profit/Loss</th>
-                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
+                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th> --}}
                     </tr>
                   </thead>
                   <tbody>
                   
-
+                    @foreach ($profitByMonthAndYear as $data)
                    <tr>
                     
                     <td>
-                   
                       <div class="d-flex px-2 py-1">
                        
                         <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">{{$data['month']}}{{$data['year']}}</h6>
                           
-                          <h6 class="mb-0 text-sm">{{ $totalRevenue }}</h6>
                         </div>
                       </div>
                     </td>
                     <td>
-                      <p class="text-xs font-weight-bold mb-0">{{ $totalExpenses }}</p>
+                      <p class="text-xs font-weight-bold mb-0">Rs. {{$data['totalsale']}}/-</p>
                      
                     </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{  $currentDate }}</span>
+                    
+                    <td class="align-middle">
+                      <span class="text-secondary text-xs font-weight-bold">Rs. {{$data['totalmilk']}}/-</span>
                     </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{ $grossProfit }}</span>
+                    <td class="align-middle">
+                      <span class="text-secondary text-xs font-weight-bold">{{$data['totalliter']}}</span>
+                    </td>
+                    <td class="align-middle">
+                      <span class="text-secondary text-xs font-weight-bold">Rs. {{$data['totalexpense']}}/-</span>
+                    </td>
+                    <td class="align-middle ">
+                      <span class="text-secondary text-xs font-weight-bold">Rs. {{$data['profit']}}/-</span>
                     </td>
                    
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{ $netProfit }}</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{ $totalMilk }}</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{ $totalMilkIncome }}</span>
-                    </td>
-                    <td>
-                      <a type="button"  class="btn btn-dark"  OnClick="return confirm('Are You Sure You want to Delete ')" >Delete</a></td>
+                   
                   </tr> 
                    
-                  
+                   
+                  </tr> 
+                   
+                  @endforeach        
       <tbody>
        
 </table>
@@ -427,7 +447,13 @@
     }
 
   </script>
-  
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+
+
   
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>

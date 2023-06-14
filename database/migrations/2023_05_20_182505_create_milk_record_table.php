@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->date('date')->nullable();
             $table->string('cow_code')->nullable();
-            $table->string('morning')->nullable();
-            $table->string('evening')->nullable();
-            $table->string('total')->nullable();
+            $table->integer('morning')->nullable();
+            $table->integer('evening')->nullable();
+            $table->integer('total')->nullable();
             $table->string('reason')->nullable();
-            $table->float('today_rate')->nullable();
-            $table->float('total_price')->nullable();
+            $table->integer('today_rate')->nullable();
+            $table->integer('total_price')->nullable();
             $table->timestamps();
         });
     }
