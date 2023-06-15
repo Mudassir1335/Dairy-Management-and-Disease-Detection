@@ -29,7 +29,29 @@ Route::get('/', function () {
 
 });
 
-// Admin Products panel
+
+// Ecommerce Website
+Route::view('cart', 'cart');
+Route::view('checkout', 'checkout');
+
+Route::get('mainweb',[websiteController::class,'ShowProductWeb']);
+Route::post('addcart',[websiteController::class,'AddToCart']);
+Route::get('emptycart',[websiteController::class,'emptyCart']);
+Route::get('delpro/{pid}',[websiteController::class,'delcartPro']);
+
+
+
+
+
+
+
+
+ Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    // Routes that require authentication
+  // Admin Products panel
 Route::view('products','products');
 Route::post('product',[WebController::class,'addproduct']);
 Route::get('products',[WebController::class,'showproduct']);
@@ -68,52 +90,9 @@ Route::post('managesale',[websiteController::class,'managesale']);
 Route::get('showsale',[websiteController::class,'showsale']);
 Route::get('deletesale/{id}',[websiteController::class,'deletesales']);
 
-
-
-// Ecommerce Website
-Route::view('cart', 'cart');
-Route::view('checkout', 'checkout');
+// dashboard
 Route::view('dashboard', 'dashboard');
 Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
-Route::get('mainweb',[websiteController::class,'ShowProductWeb']);
-Route::post('addcart',[websiteController::class,'AddToCart']);
-Route::get('emptycart',[websiteController::class,'emptyCart']);
-Route::get('delpro/{pid}',[websiteController::class,'delcartPro']);
-
-
-
-
-
-// Manage Animals
-
-Route::get('animals',[animalController::class,'showAnimals']);
-Route::get('deleteanimal/{id}',[animalController::class,'deleteanimal']);
-Route::post('addanimals',[animalController::class,'addanimal']);
-Route::post('update-animal/{id}',[animalController::class,'updateanimal']);
-Route::get('/get-all-animal-delivery-dates', [animalController::class,'getAllDeliveryDates']);
-
-
-
-
-// Admin Category panel
-Route::view('category','category');
-Route::post('category',[CategoryController::class,'addcategory']);
-Route::get('category',[CategoryController::class,'showcategory']);
-Route::get('delete/{id}',[CategoryController::class,'delete']);
-Route::get('edit/{id}',[CategoryController::class,'fetchdata']);
-Route::post('edit',[CategoryController::class,'updateproduct']);
-
-
-
- Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::group(['middleware' => 'auth'], function () {
-    // Routes that require authentication
-  
-    // Add more authenticated routes here
-});
-
 
 // Manage Milk Record
 Route::view('milkrecords','milkrecords');
@@ -145,5 +124,34 @@ Route::view('detection1','detection1');
 Route::get('/report', [ProfitLossController::class, 'generateReport']);
 Route::get('delete/{id}',[ProfitLossController::class,'deletereport']);
 Route::get('/calculate-profit',[ProfitLossController::class,'calculateProfit']);
+
+
+// Manage Animals
+
+Route::get('animals',[animalController::class,'showAnimals']);
+Route::get('deleteanimal/{id}',[animalController::class,'deleteanimal']);
+Route::post('addanimals',[animalController::class,'addanimal']);
+Route::post('update-animal/{id}',[animalController::class,'updateanimal']);
+Route::get('/get-all-animal-delivery-dates', [animalController::class,'getAllDeliveryDates']);
+
+
+
+
+// Admin Category panel
+Route::view('category','category');
+Route::post('category',[CategoryController::class,'addcategory']);
+Route::get('category',[CategoryController::class,'showcategory']);
+Route::get('delete/{id}',[CategoryController::class,'delete']);
+Route::get('edit/{id}',[CategoryController::class,'fetchdata']);
+Route::post('edit',[CategoryController::class,'updateproduct']);
+
+
+
+
+    // Add more authenticated routes here
+});
+
+
+
 
 

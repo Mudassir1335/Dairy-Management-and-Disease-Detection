@@ -67,14 +67,7 @@
             <span class="nav-link-text ms-1">Animal Records</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('category')}}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">view_in_ar</i>
-            </div>
-            <span class="nav-link-text ms-1">Category</span>
-          </a>
-        </li>
+       
         <li class="nav-item">
           <a class="nav-link text-white " href="{{url('milkrecords')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -97,6 +90,14 @@
               <i class="material-icons opacity-10">table_view</i>
             </div>
             <span class="nav-link-text ms-1">Manage Expense</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{{url('report')}}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">assignment</i>
+            </div>
+            <span class="nav-link-text ms-1">Report Management</span>
           </a>
         </li>
         <li class="nav-item mt-3">
@@ -143,7 +144,7 @@
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank" >Detect disease</a>
+              <a class="btn btn-outline-primary btn-sm mb-0 me-3" href="{{ url('detection') }}" target="_blank" >Detect disease</a>
             </li>
             <li class="nav-item d-flex align-items-center">
               <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link text-body font-weight-bold px-0">

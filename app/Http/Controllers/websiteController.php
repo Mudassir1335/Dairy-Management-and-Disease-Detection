@@ -86,11 +86,11 @@ class websiteController extends Controller
       $dataa->quantity=$details['quantity'];
       $dataa->total=$details['price'] * $details['quantity'];
       $dataa->date=Carbon::now()->format('Y.m.d');
-    //   $data=[
-    //     'subject'=>"",
-    //     'body'=>"Thanks For Shoping. You will receive your Parcel within 3 to 4 Days. If You have any Query Contact us On 0348-6698915"
-    // ];
-    // Mail::to($req->email)->send(new MailNotify($data));
+      $data=[
+        'subject'=>"",
+        'body'=>"Thanks For Shoping. You will receive your Parcel within 3 to 4 Days. If You have any Query Contact us On 0348-6698915"
+    ];
+    Mail::to($req->email)->send(new MailNotify($data));
       $dataa->save();
       $dataa=Product::where('product_name',$details['name'])->decrement('quantity', $details['quantity']);
 

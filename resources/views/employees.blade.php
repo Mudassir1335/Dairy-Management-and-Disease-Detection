@@ -66,14 +66,7 @@
             <span class="nav-link-text ms-1">Animal Records</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('category')}}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">view_in_ar</i>
-            </div>
-            <span class="nav-link-text ms-1">Category</span>
-          </a>
-        </li>
+       
         <li class="nav-item">
           <a class="nav-link text-white " href="{{url('milkrecords')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -96,6 +89,14 @@
               <i class="material-icons opacity-10">table_view</i>
             </div>
             <span class="nav-link-text ms-1">Manage Expense</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{{url('report')}}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">assignment</i>
+            </div>
+            <span class="nav-link-text ms-1">Report Management</span>
           </a>
         </li>
         <li class="nav-item mt-3">
@@ -142,7 +143,7 @@
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank" >Detect disease</a>
+              <a class="btn btn-outline-primary btn-sm mb-0 me-3" href="{{ url('detection') }}" target="_blank" >Detect disease</a>
             </li>
             <li class="nav-item d-flex align-items-center">
               <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link text-body font-weight-bold px-0">
@@ -168,76 +169,7 @@
               </a>
             </li>
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-bell cursor-pointer"></i>
-              </a>
-              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold">New message</span> from Laur
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          13 minutes ago
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold">New album</span> by Travis Scott
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          1 day
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
-                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <title>credit-card</title>
-                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                              <g transform="translate(1716.000000, 291.000000)">
-                                <g transform="translate(453.000000, 454.000000)">
-                                  <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
-                                  <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
-                                </g>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          Payment successfully completed
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          2 days
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
+             
               </ul>
             </li>
           </ul>
@@ -267,10 +199,9 @@
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">First Name</th>
                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Last Name </th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">CNIC</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
                        
                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">salary</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Gander</th>
+                      
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
@@ -303,16 +234,12 @@
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold" >{{$emp['cnic']}}</span>
                     </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$emp['email']}}</span>
-                    </td>
+                  
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">{{$emp['salary']}}</span>
                     </td>
                    
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$emp['gender']}}</span>
-                    </td>
+                  
                   
                     <td>
                       <img src="uploads/{{$emp['employee_image']}}" style="
@@ -343,33 +270,25 @@
         <input type="hidden" value="{{$emp['id']}}" name="id"/>  
       <div class="form-group">
       <label >First Name</label>
-      <input type="text" name="fname" value="{{$emp['first_name']}}" class="form-control"  placeholder="First Name">
+      <input type="text" name="fname" value="{{$emp['first_name']}}" class="form-control"  >
     </div>
     <div class="form-group">
       
       <label for="exampleDropdownFormPassword1">Last Name</label>
-      <input type=""  name="lname" value="{{$emp['last_name']}}" class="form-control" id="exampleDropdownFormPassword1" placeholder="Last Name ">
+      <input type=""  name="lname" value="{{$emp['last_name']}}" class="form-control" id="exampleDropdownFormPassword1" >
     </div>
     <div class="form-group">
       
       <label for="exampleDropdownFormq">CNIC</label>
-      <input type="" name="cnic" value="{{$emp['cnic']}}" class="form-control" id="exampleDropdownFormq" placeholder="CNIC">
+      <input type="" name="cnic" value="{{$emp['cnic']}}" class="form-control" id="exampleDropdownFormq" >
     </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormC">email</label>
-      <input type="text" name="email" value="{{$emp['email']}}" class="form-control" id="exampleDropdownFormC" placeholder="email">
-    </div>
+   
     <div class="form-group">
       
       <label for="exampleDropdownFormdate">Salary</label>
       <input type="text" name="salary" value="{{$emp['salary']}}"class="form-control" id="exampleDropdownFormdate" placeholder="Salary">
     </div>
-    <div class="form-group">
-      
-      <label for="exampleDropdownFormdate">Gender</label>
-      <input type="text" name="gender" value="{{$emp['gender']}}"class="form-control" id="exampleDropdownFormdate" placeholder="Gender">
-    </div>
+    
     <div class="form-group">
       <input type="file" class="form-control"  name="emppic" id="exampleDropdownFormimg" >
     </div>
@@ -384,7 +303,7 @@
   </div>
 </div>
   </div>
-  @endforeach;
+  @endforeach
 <!-- end edit model -->
 
  
@@ -479,48 +398,31 @@
       <label style="
       color: black;
   ">First Name</label>
-      <input type="text" name="fname" value="{{old('fname')}}" placeholder="Muhammad" class="form-control brdr"  >
+      <input type="text" name="fname"  class="form-control brdr"  >
     </div>
     <div class="form-group">
       
       <label style="
       color: black;
   " for="exampleDropdownFormPassword1">Last Name</label>
-      <input type=""  name="lname" value="{{old('lname')}}" placeholder="bilal" class="form-control brdr" id="exampleDropdownFormPassword1" >
+      <input type=""  name="lname" class="form-control brdr" id="exampleDropdownFormPassword1" >
     </div>
     <div class="form-group">
       
       <label style="
       color: black;
   " for="exampleDropdownFormq">CNIC</label>
-      <input type="" name="cnic" value="{{old('cnic')}}" pattern="[0-9]{5}[0-9]{7}[0-9]{1}" placeholder="xxxxx-xxxxxxx-x"  class="form-control brdr" id="exampleDropdownFormq" >
+      <input type="" name="cnic"   class="form-control brdr" id="exampleDropdownFormq" >
     </div>
-    <div class="form-group">
-      
-      <label style="
-      color: black;
-  " for="exampleDropdownFormC">Email</label>
-      <input type="email" name="email" value="{{old('email')}}" placeholder="abc@mail.com"  class="form-control brdr" id="exampleDropdownFormC" >
-    </div>
+   
     <div class="form-group">
       
       <label style="
       color: black;
   " for="exampleDropdownFormC">Salary</label>
-      <input type="cash" name="salary" value="{{old('salary')}}" placeholder="10000-2000000"  class="form-control brdr" id="exampleDropdownFormC" >
+      <input type="cash" name="salary"   class="form-control brdr" id="exampleDropdownFormC" >
     </div>
-    <div class="form-group">
-      <lable>select gender :</lable>
-      <label style="
-      color: black;
-  " for="male">male</label>
-      <input type="radio" checked name="gender" value="male" id="male" >
-      <label style="
-      color: black;
-  " for="female">female</label>
-      <input type="radio" name="gender" value="female" id="female" >
-    
-    </div>
+   
     <div class="form-group">
       <label style="
       color: black;

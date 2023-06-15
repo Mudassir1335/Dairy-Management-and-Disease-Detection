@@ -38,6 +38,29 @@
     border: solid black 1px;
 }
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function(){
+   $("#myinput").on("keyup", function() {
+     var value = $(this).val().toLowerCase();
+     $("#mytable tbody tr").filter(function() {
+       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+     });
+ 
+     // show the table header row only if there are visible rows in the tbody
+     if ($("#mytable tbody tr:visible").length > 0) {
+       $("#mytable thead").show();
+       $("#message").hide();
+     } else {
+       $("#mytable thead").hide();
+       $("#message").text("No results found.").show();
+     }
+ 
+     // move the first visible row to the top of the table
+     $("#mytable tbody tr:first-child").before($("#mytable tbody tr:visible:first"));
+   });
+ });
+   </script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -61,7 +84,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white  active bg-gradient-primary" href="{{url('products')}}">
+          <a class="nav-link text-white  " href="{{url('products')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -76,14 +99,7 @@
             <span class="nav-link-text ms-1">Animal Records</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('category')}}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">view_in_ar</i>
-            </div>
-            <span class="nav-link-text ms-1">Category</span>
-          </a>
-        </li>
+        
         <li class="nav-item">
           <a class="nav-link text-white " href="{{url('milkrecords')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -98,6 +114,23 @@
               <i class="material-icons opacity-10">notifications</i>
             </div>
             <span class="nav-link-text ms-1">Manage Sales</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white  " href="{{url('expenses')}}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">table_view</i>
+            </div>
+            <span class="nav-link-text ms-1">Manage Expense</span>
+          </a>
+        </li>
+       
+        <li class="nav-item">
+          <a class="nav-link text-white active bg-gradient-primary" href="{{url('report')}}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">assignment</i>
+            </div>
+            <span class="nav-link-text ms-1">Report Management</span>
           </a>
         </li>
         <li class="nav-item mt-3">
@@ -119,22 +152,8 @@
             <span class="nav-link-text ms-1">Manage Admins</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/sign-in.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">login</i>
-            </div>
-            <span class="nav-link-text ms-1">Sign In</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/sign-up.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">assignment</i>
-            </div>
-            <span class="nav-link-text ms-1">Sign Up</span>
-          </a>
-        </li>
+       
+       
       </ul>
     </div>
     
@@ -153,8 +172,8 @@
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <div class="input-group input-group-outline">
-              <label class="form-label">Type here...</label>
-              <input type="text" class="form-control">
+              <label class="form-label" >Type here...</label>
+              <input type="text" id="myinput" class="form-control">
             </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
@@ -184,77 +203,8 @@
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
               </a>
             </li>
-            <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-bell cursor-pointer"></i>
-              </a>
-              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold">New message</span> from Laur
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          13 minutes ago
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold">New album</span> by Travis Scott
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          1 day
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
-                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <title>credit-card</title>
-                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                              <g transform="translate(1716.000000, 291.000000)">
-                                <g transform="translate(453.000000, 454.000000)">
-                                  <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
-                                  <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
-                                </g>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          Payment successfully completed
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          2 days
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
+            
+               
               </ul>
             </li>
           </ul>
@@ -264,6 +214,13 @@
     <!-- End Navbar -->
    
 </div>
+<div class="text-center">
+  
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#yearlyprofit">
+Calculate Yearly Profit
+</button>
+
+</div>
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -271,25 +228,7 @@
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
 
-                <div style="
-                float: right;
-                margin-right: 20px;
-            "> <label style="
-    color: black;
-    font-size: 15px;
-    font-weight: bold;
-" for="">Month: </label>
-                <input type="date" id="start-date" >
-                <label style="
-                color: black;
-                font-size: 15px;
-                font-weight: bold;
-            " for="">Years: </label>
-               <input type="date" id="end-date" >
-              </div>
-              <button id="calculate-profit">Calculate Profit</button>
-
-              <div id="result"></div>
+                
                 <h6 class="text-white text-capitalize ps-3">P&L Report</h6>
               </div>
             </div>
@@ -297,7 +236,7 @@
               <div class="table-responsive p-0" style="
               overflow-y: hidden;
           ">
-                <table class="table align-items-center mb-0">
+                <table id="mytable" class="table align-items-center mb-0">
                   <thead>
                     <tr>
                    
@@ -426,6 +365,51 @@
   </div>
 </div>
 </div>
+{{-- yearly profit --}}
+
+
+<div class="modal fade" id="yearlyprofit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Calculate Year profit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+         
+          <div class="form-group">
+            <label style="color: black;">Date-From</label>
+            <input type="date" name="from" id="start-date" class="form-control brdr">
+          </div>
+          <div class="form-group">
+            <label style="color: black;">Date-To</label>
+            <input type="date" name="to" id="end-date" class="form-control brdr">
+          </div><br>
+          <div class="form-group">
+            {{-- <label style="color: black;" for="totalmilk">Total Milk</label>
+            <input type="text" name="totalmilk" class="form-control brdr" id="totalmilk"> --}}
+            <h2 style="
+            text-align: center;
+            color: red;
+           
+        " id="result"></h2>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" id="calculate-profit" class="btn btn-primary">Calculate</button>
+          </div>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{{-- /yearly profit --}}
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -452,7 +436,42 @@
   <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
+<script>
+ $(document).ready(function() {
+  // Handle the button click event
+  $('#calculate-profit').click(function() {
+    var startDate = $('#start-date').val();
+    var endDate = $('#end-date').val();
 
+    if (startDate && endDate) {
+      // Set the day of the selected start date to 1
+      startDate = startDate.slice(0, 8) + '01';
+      // Set the day of the selected end date to 1
+      endDate = endDate.slice(0, 8) + '01';
+
+      // Perform an AJAX request to calculate the total profit
+      $.ajax({
+        url: '/calculate-profit',
+        type: 'GET',
+        data: {
+          startDate: startDate,
+          endDate: endDate
+        },
+        success: function(response) {
+          $('#result').text('Total Profit: ' + response);
+        },
+        error: function() {
+          alert('An error occurred while calculating the total profit.');
+        }
+      });
+    } else {
+      alert('Please select both start and end dates.');
+    }
+  });
+});
+
+
+</script>
 
   
   <!-- Github buttons -->

@@ -21,9 +21,9 @@ class EmployeeController extends Controller
           $employee->first_name=$req->fname;
           $employee->last_name=$req->lname;
           $employee->cnic=$req->cnic;
-          $employee->email=$req->email;
+         
           $employee->salary=$req->salary;
-          $employee->gender=$req->gender;
+         
         
           $employee->save();
           return redirect('employees');
@@ -61,9 +61,9 @@ class EmployeeController extends Controller
        $employee->first_name=$req->fname;
        $employee->last_name=$req->lname;
        $employee->cnic=$req->cnic;
-        $employee->email=$req->email;
+        
         $employee->salary=$req->salary;
-        $employee->gender=$req->gender;
+       
        
        $employee->update();
         return redirect('employees');

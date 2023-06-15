@@ -18,7 +18,6 @@ public function generateReport()
 {
     $profitByMonthAndYear = [];
 
-    // Retrieve the distinct months and years from the milk_record table
     $monthsAndYears = milk_record::distinct()
         ->selectRaw('MONTH(date) as month, YEAR(date) as year')
         ->get();
@@ -27,7 +26,7 @@ public function generateReport()
         $month = $monthAndYear->month;
         $year = $monthAndYear->year;
 
-        // Retrieve data for the specific month and year from each table
+       
         $milkData = milk_record::whereMonth('date', $month)->whereYear('date', $year)
             ->get();
         $saleData = managesale::whereMonth('date', $month)
@@ -37,8 +36,6 @@ public function generateReport()
             ->whereYear('date', $year)
             ->get();
             
-
-        // Calculate the monthly profit
         $totalMilk = $milkData->sum('total_price');
         $totalliter = $milkData->sum('total');
         $totalSale = $saleData->sum('total');
@@ -60,6 +57,58 @@ public function generateReport()
 
     return view('profit_loss_report', compact('profitByMonthAndYear'));
 }
+
+public function calculateProfit(Request $request)
+{
+    $startDate = $request->input('startDate');
+    $endDate = $request->input('endDate');
+
+    $startMonth = date('m', strtotime($startDate));
+    $startYear = date('Y', strtotime($startDate));
+    $endMonth = date('m', strtotime($endDate));
+    $endYear = date('Y', strtotime($endDate));
+
+    $milkData = milk_record::where(function ($query) use ($startMonth, $startYear, $endMonth, $endYear) {
+        $query->whereYear('date', '>=', $startYear)
+            ->whereMonth('date', '>=', $startMonth);
+    })
+    ->where(function ($query) use ($startMonth, $startYear, $endMonth, $endYear) {
+        $query->whereYear('date', '<=', $endYear)
+            ->whereMonth('date', '<=', $endMonth);
+    })
+    ->get();
+
+    $saleData = managesale::where(function ($query) use ($startMonth, $startYear, $endMonth, $endYear) {
+        $query->whereYear('date', '>=', $startYear)
+            ->whereMonth('date', '>=', $startMonth);
+    })
+    ->where(function ($query) use ($startMonth, $startYear, $endMonth, $endYear) {
+        $query->whereYear('date', '<=', $endYear)
+            ->whereMonth('date', '<=', $endMonth);
+    })
+    ->get();
+
+    $expenseData = expense::where(function ($query) use ($startMonth, $startYear, $endMonth, $endYear) {
+        $query->whereYear('date', '>=', $startYear)
+            ->whereMonth('date', '>=', $startMonth);
+    })
+    ->where(function ($query) use ($startMonth, $startYear, $endMonth, $endYear) {
+        $query->whereYear('date', '<', $endYear)
+            ->orWhere(function ($query) use ($startMonth, $startYear, $endMonth, $endYear) {
+                $query->whereYear('date', '=', $endYear)
+                    ->whereMonth('date', '<=', $endMonth);
+            });
+    })
+    ->get();
+
+    $totalMilk = $milkData->sum('total_price');
+    $totalSale = $saleData->sum('total');
+    $totalExpense = $expenseData->sum('expense_amount');
+    $totalProfit = $totalMilk + $totalSale - $totalExpense;
+
+    return $totalProfit;
+}
+
 
 
 }

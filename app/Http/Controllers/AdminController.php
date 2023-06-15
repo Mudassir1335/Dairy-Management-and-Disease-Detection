@@ -4,25 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\admin;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
     public function addAdmin(Request $req)
     {
-        $ad=new admin;
+        $ad=new User;
        
-        $file=$req->file('adminpic');
-        $extenstion= $file->getClientOriginalExtension();
-        $filename=time().'.' .$extenstion;
-        $file->move('uploads',$filename);
-        $ad->admin_image=$filename;
+       
 
     
-        $ad->first_name=$req->fname;
-        $ad->last_name=$req->lname;
-        $ad->cnic=$req->cnic;
+        $ad->name=$req->fname;
+       
+        
         $ad->email=$req->email;
-        $ad->password=$req->password;
+        $ad->password = Hash::make($req->password);
         
         $ad->save();
         return redirect('admins');
@@ -31,7 +29,7 @@ class AdminController extends Controller
 
     public function deleteadmin($id)
     {
-        $data=admin::find($id);
+        $data=User::find($id);
         $data->delete();
         return redirect()->back();
 
@@ -39,35 +37,27 @@ class AdminController extends Controller
 
     public function showAdmin()
     {
-        $data= admin::all();
+        $data=User::all();
         return view('admins',['admins'=>$data]);
 
     }
-    public function updateAdmin(request $req)
-    {
+   
+    // public function updateAdmin(request $req)
+    // {
        
-       $ad=admin::find($req->id);
-       if($req->hasfile('file'))
-        {
-           
-       $file=$req->file('file');
-       $extenstion= $file->getClientOriginalExtension();
-       $filename=time().'.' .$extenstion;
-       $file->move('uploads',$filename);
-        
-       $ad->admin_image=$filename;
-        }
-       $ad->first_name=$req->fname;
-       $ad->last_name=$req->lname;
-       $ad->cnic=$req->cnic;
-       $ad->email=$req->email;
-       $ad->password=$req->password;
+    //    $ad=admin::find($req->id);
        
-       $ad->update();
-       return redirect('admins');
+    //    $ad->first_name=$req->fname;
+    //    $ad->last_name=$req->lname;
+    //    $ad->cnic=$req->cnic;
+    //    $ad->email=$req->email;
+    //    $ad->password=$req->password;
+       
+    //    $ad->update();
+    //    return redirect('admins');
 
 
-    }
+    // }
 
 
 }

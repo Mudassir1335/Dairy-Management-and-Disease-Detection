@@ -9,6 +9,7 @@
   <title>
    Dashboard Dairy Managment System
   </title>
+  
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
   <!-- Nucleo Icons -->
@@ -28,9 +29,67 @@
 
   }
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
+  <script>
+      $(document).ready(function() {
+      $('#exampleModalLong12').modal({
+        backdrop: 'static',
+        keyboard: false
+      });
+  
+     $(document).ready(function() {
+    $('#exampleModalLong12').modal('show');
+     });
+  
+      $('#adminForm').submit(function(e) {
+        e.preventDefault(); 
+  
+       
+        var inputVal = $('input[name="fname"]').val();
+        if (inputVal === '1335') {
+         
+          $('#exampleModalLong12').modal('hide');
+        } else {
+          
+          alert('Wrong code! Redirect To Dashboard');
+          window.location.href = 'dashboard';
+        }
+      });
+    });
+  </script>
+ 
+  {{-- asdasdasd --}}
+  <div class="modal fade" id="exampleModalLong12" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle1" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle1">Admin Security Code</h5>
+         
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="px-4 py-3" action="admin" method="post" enctype="multipart/form-data" id="adminForm">
+            @csrf
+            <div class="form-group">
+              <label style="color: black;">Enter Security Code</label>
+              <input type="text" SetFocusOnError="true" name="fname" class="form-control brdr">
+            </div>
+            <div class="modal-footer">
+              
+              <button type="submit" class="btn btn-primary" id="saveChangesBtn">Proceed</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {{-- dfsdfds --}}
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -66,14 +125,7 @@
             <span class="nav-link-text ms-1">Animal Records</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('category')}}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">view_in_ar</i>
-            </div>
-            <span class="nav-link-text ms-1">Category</span>
-          </a>
-        </li>
+       
         <li class="nav-item">
           <a class="nav-link text-white " href="{{url('milkrecords')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -96,6 +148,14 @@
               <i class="material-icons opacity-10">table_view</i>
             </div>
             <span class="nav-link-text ms-1">Manage Expense</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{{url('report')}}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">assignment</i>
+            </div>
+            <span class="nav-link-text ms-1">Report Management</span>
           </a>
         </li>
         <li class="nav-item mt-3">
@@ -144,7 +204,7 @@
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank" >Detect disease</a>
+              <a class="btn btn-outline-primary btn-sm mb-0 me-3" href="{{ url('detection') }}" target="_blank" >Detect disease</a>
             </li>
             <li class="nav-item d-flex align-items-center">
               <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link text-body font-weight-bold px-0">
@@ -169,77 +229,7 @@
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
               </a>
             </li>
-            <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-bell cursor-pointer"></i>
-              </a>
-              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold">New message</span> from Laur
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          13 minutes ago
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold">New album</span> by Travis Scott
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          1 day
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
-                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <title>credit-card</title>
-                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                              <g transform="translate(1716.000000, 291.000000)">
-                                <g transform="translate(453.000000, 454.000000)">
-                                  <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
-                                  <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
-                                </g>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          Payment successfully completed
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          2 days
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
+           
               </ul>
             </li>
           </ul>
@@ -266,14 +256,12 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">First Name</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Last Name </th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">CNIC</th>
-                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
-<!--                        
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> password</th> -->
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Edit</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4">Full Name</th>
+                     
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-12">Email</th>
+
+                     
+                   
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
                     
                     
@@ -294,34 +282,21 @@
                           <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
                         </div> --}}
                         <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">{{$ad['first_name']}}</h6>
+                          <h6 class="mb-0 text-sm">{{$ad['name']}}</h6>
                           
                         </div>
                       </div>
                     </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">{{$ad['last_name']}}</p>
-                     
-                    </td>
+                   
                     
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$ad['cnic']}}</span>
-                    </td>
+                   
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">{{$ad['email']}}</span>
                     </td>
                    
-                    <!-- <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{$ad['password']}}</span>
-                    </td> -->
-                    <td>
-                      <img src="uploads/{{$ad['admin_image']}}" style="
-                      width: 50px;
-                  " alt="" srcset="">
-                    </td>
-                    <td> <button type="button" href=""   data-toggle="modal" data-target="#exampleModalLongg{{$ad['id']}}" class="btn btn-dark editbtn">Edit</button>
+                  
                     
-                  </td>
+                   
                     <td>
                       <a type="button"  href={{"deleteadmin/" .$ad['id']}} class="btn btn-dark"  OnClick="return confirm('Are You Sure You want to Delete admin')" >Delete</a></td>
                   </tr> 
@@ -383,7 +358,7 @@
 <!-- end edit model -->
 
  
-      @endforeach; 
+      @endforeach
 </table>
 </div>
   </main>
@@ -473,49 +448,30 @@
       <div class="form-group"> 
       <label style="
       color: black;
-  ">First Name</label>
-      <input type="text" value="{{old('fname')}}" SetFocusOnError="true" placeholder="Muhammad" name="fname" class="form-control brdr"  >
-      <!-- <span class="text-danger">@error('fname'){{$message}} @enderror</apan> -->
+  ">Full Name</label>
+      <input type="text"  SetFocusOnError="true"  name="fname" class="form-control brdr"  >
+     
     </div>
     <div class="form-group">
       
-      <label style="
-      color: black;
-  " for="exampleDropdownFormPassword1">Last Name</label>
-      <input type=""  name="lname" value="{{old('lname')}}" placeholder="bilal" class="form-control brdr" id="exampleDropdownFormPassword1" >
-      <!-- <span class="text-danger">@error('lname'){{$message}} @enderror</apan> -->
-    </div>
-    <div class="form-group">
       
-      <label style="
-      color: black;
-  " for="exampleDropdownFormq">CNIC</label>
-      <input type="text" name="cnic" value="{{old('cnic')}}" pattern="[0-9]{5}[0-9]{7}[0-9]{1}" placeholder="33333-2222222-1"  class="form-control brdr" id="exampleDropdownFormq" >
-     <span class="text-danger" SetFocusOnError="true">@error('cnic'){{$message}} @enderror</apan> 
-    </div>
     <div class="form-group">
       
       <label style="
       color: black;
   " for="exampleDropdownFormC">Email</label>
-      <input type="email" value="{{old('email')}}" placeholder="abc@mail.com" name="email"  class="form-control brdr" id="exampleDropdownFormC" >
-       <span class="text-danger" SetFocusOnError="true">@error('email'){{$message}} @enderror</apan> 
+      <input type="email"   name="email"  class="form-control brdr" id="exampleDropdownFormC" >
+      
     </div>
     <div class="form-group">
       
       <label style="
       color: black;
   " for="exampleDropdownFormdate">Password</label>
-      <input type="password" value="{{old('password')}}" placeholder="password" name="password"  class="form-control brdr" id="exampleDropdownFormdate" >
-      <!-- <span class="text-danger">@error('password'){{$message}} @enderror</apan> -->
+      <input type="password"  name="password"  class="form-control brdr" id="exampleDropdownFormdate" >
+      
     </div>
-    <div class="form-group">
-      <label style="
-      color: black;
-  " for="exampleDropdownFormdate">Upload PIcture</label>
-      <input type="file" class="form-control brdr" value="{{old('file')}}"  name="file" id="exampleDropdownFormimg" >
-      <!-- <span class="text-danger">@error('file'){{$message}} @enderror</apan> -->
-    </div>
+    
 
 
       <div class="modal-footer">
@@ -555,6 +511,7 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.min.js?v=3.0.4"></script>
   </div>
+  
 </body>
 
 </html>
