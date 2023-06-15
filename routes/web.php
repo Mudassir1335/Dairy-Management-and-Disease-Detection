@@ -41,14 +41,9 @@ Route::get('delpro/{pid}',[websiteController::class,'delcartPro']);
 
 
 
-
-
-
-
-
  Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::group(['middleware' => 'auth'], function () {
     // Routes that require authentication
   // Admin Products panel
